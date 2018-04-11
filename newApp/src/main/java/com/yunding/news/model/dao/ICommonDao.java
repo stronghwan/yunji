@@ -1,0 +1,35 @@
+package com.yunding.news.model.dao;
+
+import java.io.Serializable;
+
+/**
+ * @TODO
+ * @Author Hao Wan
+ * @Verison
+ * @Date2018/4/2-23-53
+ */
+public interface ICommonDao<T extends Serializable> {
+    int save(T t);
+    T findByUserName(String name);
+
+    /**
+     * 通过登录用户注册的用户名查找此用户的id
+     * @param name 用户名
+     * @return id
+     */
+    int findUserId(String name);
+
+    /**
+     * 用来给其他的表增加用户注册时注册表产生的id
+     * @param id
+     * @return
+     */
+    int save(int id);
+
+    /**
+     * 查询通过personalCenter表的外键user_id
+     * @param name
+     * @return
+     */
+    T findByPerUserID(String name);
+}
