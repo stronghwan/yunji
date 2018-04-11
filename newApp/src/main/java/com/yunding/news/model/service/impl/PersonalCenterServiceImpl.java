@@ -18,7 +18,6 @@ public class PersonalCenterServiceImpl extends CommonServiceImpl<PersonalCenter>
 
     @Override
     public PersonalCenter findByPerUserID(String name) {
-        //
         return (PersonalCenter) DaoFactory.getDao("personalCenter").findByPerUserID(name);
     }
 }
