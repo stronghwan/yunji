@@ -20,7 +20,7 @@ public final class DaoFactory {
         }
         return createDao(name);
     }
-
+// haowan
     private synchronized static ICommonDao createDao(String name) {
         ICommonDao dao = null;
         if("user".equals(name)){
