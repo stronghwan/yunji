@@ -1,6 +1,7 @@
 package com.yunding.news.model.dao.impl;
 
 import com.yunding.news.model.dao.ICommonDao;
+import com.yunding.news.model.pojo.Account;
 
 import java.io.Serializable;
 
@@ -32,5 +33,25 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     @Override
     public T findByPerUserID(String name) {
         return null;
+    }
+
+    @Override
+    public int saveByStep(T t) {
+        return 0;
+    }
+
+    @Override
+    public int saveByStepTwo(T t) {
+        return 0;
+    }
+
+    @Override
+    public int saveByStepThree(T t) {
+        return 0;
+    }
+
+    @Override
+    public int modifiedUserInfo(T t) {
+        return 0;
     }
 }

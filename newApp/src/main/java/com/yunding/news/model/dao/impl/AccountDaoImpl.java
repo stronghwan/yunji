@@ -121,4 +121,74 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
             }
         };
     }
+
+
+    /**
+     * 通过用户名添加注册信息
+     * @param account 用户名
+     * @return
+    */
+
+    @Override
+    public int saveByStep(final Account account) {
+        String sql = "insert into account(user_name,user_password) values(?,?)";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,account.getName());
+                    pstmt.setString(2,account.getPassword());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public int saveByStepTwo(final Account account) {
+        String sql = "insert into account(user_phone,user_email,question_choice,answer) values(?,?,?,?) where user_name=?";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,account.getPhone());
+                    pstmt.setString(2,account.getEmail());
+                    pstmt.setInt(3,account.getChoice());
+                    pstmt.setString(4,account.getAnswer());
+                    pstmt.setString(5,account.getName());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public int saveByStepThree(Account account) {
+        // 暂时先返回零
+        return 0;
+    }
+
+    /**
+     *  通过找回密码修改密码的值
+     * @param account
+     * @return
+     */
+    @Override
+    public int modifiedUserInfo(final Account account) {
+        String sql = "update account set user_password = ? where user_name = ?";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,account.getPassword());
+                    pstmt.setString(1,account.getName());
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

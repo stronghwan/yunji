@@ -1,5 +1,7 @@
 package com.yunding.news.model.dao;
 
+import com.yunding.news.model.pojo.Account;
+
 import java.io.Serializable;
 
 /**
@@ -10,7 +12,17 @@ import java.io.Serializable;
  */
 public interface ICommonDao<T extends Serializable> {
     int save(T t);
+
+    /**
+     * 通过用户名添加注册信息
+     * @param t
+     * @return
+     */
+    int saveByStep(T t);
+    int saveByStepTwo(T t);
+    int saveByStepThree(T t);
     T findByUserName(String name);
+    int modifiedUserInfo(T t);
 
     /**
      * 通过登录用户注册的用户名查找此用户的id
