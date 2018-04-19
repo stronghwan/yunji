@@ -3,6 +3,7 @@ package com.yunding.news.model.dao;
 import com.yunding.news.model.pojo.Account;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @TODO
@@ -44,4 +45,11 @@ public interface ICommonDao<T extends Serializable> {
      * @return
      */
     T findByPerUserID(String name);
+
+    /**
+     * 传入用户名，用户名传入里面封装的方法得到注册id
+     * @param
+     * @return 所有被关注人的集合
+     */
+    List<T> findAttByUserId();
 }

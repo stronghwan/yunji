@@ -1,5 +1,7 @@
 package com.yunding.news.model.service;
 
+import java.util.List;
+
 /**
  * @TODO
  * @Author Hao Wan
@@ -15,4 +17,5 @@ public interface ICommonService<T extends java.io.Serializable> {
     T findByUserName(String name);
     T findByPerUserID(String name);
     int findUserId(String name);
+    List<T> findAttByUserId();
 }

@@ -1,6 +1,7 @@
 package com.yunding.news.model.dao;
 
 import com.yunding.news.model.dao.impl.AccountDaoImpl;
+import com.yunding.news.model.dao.impl.AttentionDaoImpl;
 import com.yunding.news.model.dao.impl.PersonalCenterDaoImpl;
 
 import java.util.WeakHashMap;
@@ -29,6 +30,10 @@ public final class DaoFactory {
         }
         if("personalCenter".equals(name)){
             dao = new PersonalCenterDaoImpl();
+            map.put(name,dao);
+        }
+        if("attention".equals(name)){
+            dao = new AttentionDaoImpl();
             map.put(name,dao);
         }
         return dao;
