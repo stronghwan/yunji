@@ -60,4 +60,14 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     public List<T> findAttByUserId() {
         return null;
     }
+
+    @Override
+    public List<T> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<T> findCommentFriend() {
+        return null;
+    }
 }

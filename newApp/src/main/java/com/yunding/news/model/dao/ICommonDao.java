@@ -52,4 +52,6 @@ public interface ICommonDao<T extends Serializable> {
      * @return 所有被关注人的集合
      */
     List<T> findAttByUserId();
+    List<T> findAll();
+    List<T> findCommentFriend();
 }
