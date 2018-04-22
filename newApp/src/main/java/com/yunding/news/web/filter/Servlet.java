@@ -21,7 +21,7 @@ public class Servlet extends HttpServlet {
         String content = request.getParameter("content");
         MyServlet myServlet = new MyServlet();
         String name = myServlet.getParameter(content);
-        request.setAttribute("content",name);
+        request.setAttribute("content", name);//h
         request.getRequestDispatcher("/a.jsp").forward(request,response);
     }
 
