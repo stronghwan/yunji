@@ -4,6 +4,7 @@ import com.yunding.news.model.dao.ICommonDao;
 import com.yunding.news.model.pojo.Account;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @TODO
@@ -53,5 +54,25 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     @Override
     public int modifiedUserInfo(T t) {
         return 0;
+    }
+
+    @Override
+    public List<T> findAttByUserId(int id) {
+        return null;
+    }
+
+    @Override
+    public List<T> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<T> findCommentFriend(String name) {
+        return null;
+    }
+
+    @Override
+    public T findByUserId(int id) {
+        return null;
     }
 }

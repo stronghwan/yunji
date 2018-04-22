@@ -1,6 +1,7 @@
 package com.yunding.news.model.service;
 
 import com.yunding.news.model.service.impl.AccountServiceImpl;
+import com.yunding.news.model.service.impl.AttentionServiceImpl;
 import com.yunding.news.model.service.impl.PersonalCenterServiceImpl;
 
 import javax.swing.*;
@@ -26,9 +27,15 @@ public final class ServiceFactory {
         ICommonService service = null;
         if("user".equals(name)){
             service = new AccountServiceImpl();
+            map.put(name,service);
         }
         if("personalCenter".equals(name)){
             service = new PersonalCenterServiceImpl();
+            map.put(name,service);
+        }
+        if("attention".equals(name)){
+            service = new AttentionServiceImpl();
+            map.put(name,service);
         }
         return service;
     }
