@@ -21,8 +21,8 @@ import java.util.List;
 public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
 
     @Override
-    public List<CommentFriendCircle> findCommentFriend() {
-        List<Attention> aList = DaoFactory.getDao("attention").findAttByUserId();
+    public List<CommentFriendCircle> findCommentFriend(String name) {
+        List<Attention> aList = DaoFactory.getDao("attention").findAttByUserId(findUserId(name));
         List<CommentFriendCircle> cfList = null;
         for (Attention list : aList) {
             final int aUserId = list.getAuserId();

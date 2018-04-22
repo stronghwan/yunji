@@ -42,7 +42,7 @@ public final class DaoFactory {
             dao = new CommentDaoImpl();
             map.put(name,dao);
         }
-        if("fcMax".equals(name)){
+        if("fcMix".equals(name)){
             dao = new CommentFriendDaoImpl();
             map.put(name,dao);
         }

@@ -67,7 +67,7 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     }
 
     @Override
-    public List<T> findCommentFriend() {
+    public List<T> findCommentFriend(String name) {
         return null;
     }
 

@@ -60,5 +60,5 @@ public interface ICommonDao<T extends Serializable> {
      */
     List<T> findAttByUserId(int id);
     List<T> findAll();
-    List<T> findCommentFriend();
+    List<T> findCommentFriend(String name);
 }
