@@ -17,5 +17,5 @@ public interface ICommonService<T extends java.io.Serializable> {
     T findByUserName(String name);
     T findByPerUserID(String name);
     int findUserId(String name);
-    List<T> findAttByUserId();
+    List<T> findAttByUserId(int id);
 }

@@ -21,7 +21,7 @@ import java.util.List;
 public class AttentionDaoImpl extends CommonDaoImpl<Attention>{
     @Override
     public int save(final Attention attention) {
-        String sql = "insert into attention(uself_id,auser_id,auser_name) values(?,?,?)";
+        String sql = "insert into attentions(uself_id,auser_id,auser_name) values(?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -42,9 +42,18 @@ public class AttentionDaoImpl extends CommonDaoImpl<Attention>{
      * @return
      */
     @Override
-    public List<Attention> findAttByUserId() {
-        String sql = "select auser_name from attention";
-        return JdbcTemplate.query(sql, null,createHandle());
+    public List<Attention> findAttByUserId(final int id) {
+        String sql = "select * from attentions where useif_id = ?";
+        return JdbcTemplate.query(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setInt(1,id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, createHandle());
     }
 
     private JdbcTemplate.RowCallBackHandle<Attention> createHandle() {

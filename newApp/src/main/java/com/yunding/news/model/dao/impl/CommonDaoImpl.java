@@ -57,7 +57,7 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     }
 
     @Override
-    public List<T> findAttByUserId() {
+    public List<T> findAttByUserId(int id) {
         return null;
     }
 
@@ -68,6 +68,11 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
 
     @Override
     public List<T> findCommentFriend() {
+        return null;
+    }
+
+    @Override
+    public T findByUserId(int id) {
         return null;
     }
 }

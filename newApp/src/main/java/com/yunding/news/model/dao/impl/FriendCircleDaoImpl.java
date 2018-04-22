@@ -65,4 +65,19 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
             }
         };
     }
+
+    @Override
+    public FriendCircle findByUserId(final int id) {
+        String sql = "select * from friend_circles where user_id = ?";
+        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setInt(1,id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        },creaHandle());
+    }
 }

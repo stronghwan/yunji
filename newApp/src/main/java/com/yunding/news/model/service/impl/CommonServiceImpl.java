@@ -50,7 +50,7 @@ public abstract class CommonServiceImpl<T extends java.io.Serializable> implemen
     }
 
     @Override
-    public List<T> findAttByUserId() {
+    public List<T> findAttByUserId(int id) {
         return null;
     }
 }

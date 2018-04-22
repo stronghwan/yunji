@@ -5,6 +5,7 @@ import com.yunding.news.model.pojo.Comment;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -34,5 +35,38 @@ public class CommentDaoImpl extends CommonDaoImpl<Comment>{
                 }
             }
         });
+    }
+
+    @Override
+    public Comment findByUserId(final int id) {
+        String sql = "select * from comments where user_id = ?";
+        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setInt(1,id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        },createHandle());
+    }
+
+    private JdbcTemplate.RowCallBackHandle<Comment> createHandle() {
+        return new JdbcTemplate.RowCallBackHandle<Comment>() {
+            @Override
+            public Comment processRow(ResultSet rs) {
+                Comment comment = null;
+                try {
+                    comment.setcId(rs.getInt("c_id"));
+                    comment.setcUserId(rs.getInt("user_id"));
+                    comment.setC_time(rs.getDate("c_time"));
+                    comment.setcContent(rs.getString("c_content"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return comment;
+            }
+        };
     }
 }

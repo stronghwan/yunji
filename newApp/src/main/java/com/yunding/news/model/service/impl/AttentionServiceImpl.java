@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class AttentionServiceImpl extends CommonServiceImpl<Attention>{
     @Override
-    public List<Attention> findAttByUserId() {
-        return DaoFactory.getDao("attention").findAttByUserId();
+    public List<Attention> findAttByUserId(int id) {
+        return DaoFactory.getDao("attention").findAttByUserId(id);
     }
 
     @Override

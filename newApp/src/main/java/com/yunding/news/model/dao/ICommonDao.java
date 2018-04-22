@@ -33,6 +33,13 @@ public interface ICommonDao<T extends Serializable> {
     int findUserId(String name);
 
     /**
+     * 通过传入的id查找对象，主要用于朋友圈
+     * @param id
+     * @return
+     */
+    T findByUserId(int id);
+
+    /**
      * 用来给其他的表增加用户注册时注册表产生的id
      * @param id
      * @return
@@ -51,7 +58,7 @@ public interface ICommonDao<T extends Serializable> {
      * @param
      * @return 所有被关注人的集合
      */
-    List<T> findAttByUserId();
+    List<T> findAttByUserId(int id);
     List<T> findAll();
     List<T> findCommentFriend();
 }
