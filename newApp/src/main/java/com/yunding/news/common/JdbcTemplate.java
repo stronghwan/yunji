@@ -119,9 +119,7 @@ public final class JdbcTemplate {
             return pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }finally {
+        } finally {
             DBUtil.release(pstmt);
         }
         return 0;

@@ -53,4 +53,9 @@ public abstract class CommonServiceImpl<T extends java.io.Serializable> implemen
     public List<T> findAttByUserId(int id) {
         return null;
     }
+
+    @Override
+    public int mosdifiedUserInfo(String name) {
+        return 0;
+    }
 }

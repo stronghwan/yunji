@@ -75,4 +75,9 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     public T findByUserId(int id) {
         return null;
     }
+
+    @Override
+    public int modifiedUserInfo(String name) {
+        return 0;
+    }
 }

@@ -14,6 +14,7 @@ public interface ICommonService<T extends java.io.Serializable> {
     int saveByStepTwo(T t);
     int saveByStepThree(T t);
     int modifiedUserInfo(T t);
+    int mosdifiedUserInfo(String name);
     T findByUserName(String name);
     T findByPerUserID(String name);
     int findUserId(String name);

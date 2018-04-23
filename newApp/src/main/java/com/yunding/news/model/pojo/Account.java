@@ -17,6 +17,8 @@ public class Account implements Serializable{
     private String email;
     private int choice;
     private String answer;
+    private String status;
+    private String nickName;
     public int getId() {
         return id;
     }
@@ -79,5 +81,21 @@ public class Account implements Serializable{
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }

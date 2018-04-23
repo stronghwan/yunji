@@ -165,9 +165,19 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
     }
 
     @Override
-    public int saveByStepThree(Account account) {
-        // 暂时先返回零
-        return 0;
+    public int saveByStepThree(final Account account) {
+        String sql = "insert into account(user_sex, user_nickName) values(?,?)";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,account.getNickName());
+                    pstmt.setString(2,account.getSex());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /**
@@ -185,6 +195,21 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     pstmt.setString(1,account.getPassword());
                     pstmt.setString(1,account.getName());
 
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public int modifiedUserInfo(final String name) {
+        String sql = "update account set status = 1 where user_name = ?";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,name);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

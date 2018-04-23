@@ -4,6 +4,8 @@ import com.yunding.news.model.dao.DaoFactory;
 import com.yunding.news.model.dao.impl.CommonDaoImpl;
 import com.yunding.news.model.pojo.Account;
 
+import java.util.List;
+
 /**
  * @TODO
  * @Author Hao Wan
@@ -49,5 +51,15 @@ public class AccountServiceImpl extends CommonServiceImpl<Account>{
     @Override
     public int findUserId(String name) {
         return DaoFactory.getDao("user").findUserId(name);
+    }
+
+    @Override
+    public List<Account> findAttByUserId(int id) {
+        return DaoFactory.getDao("attention").findAttByUserId(id);
+    }
+
+    @Override
+    public int mosdifiedUserInfo(String name) {
+        return DaoFactory.getDao("user").modifiedUserInfo(name);
     }
 }

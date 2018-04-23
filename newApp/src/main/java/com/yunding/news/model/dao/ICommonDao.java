@@ -26,6 +26,12 @@ public interface ICommonDao<T extends Serializable> {
     int modifiedUserInfo(T t);
 
     /**
+     * 通过用户名修改状态
+     * @param name
+     * @return
+     */
+    int modifiedUserInfo(String name);
+    /**
      * 通过登录用户注册的用户名查找此用户的id
      * @param name 用户名
      * @return id
