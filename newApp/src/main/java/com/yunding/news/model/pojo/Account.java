@@ -19,6 +19,7 @@ public class Account implements Serializable{
     private String answer;
     private String status;
     private String nickName;
+    private String department;
     public int getId() {
         return id;
     }
@@ -97,5 +98,13 @@ public class Account implements Serializable{
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

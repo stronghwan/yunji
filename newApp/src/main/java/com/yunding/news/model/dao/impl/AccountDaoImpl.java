@@ -166,13 +166,14 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
 
     @Override
     public int saveByStepThree(final Account account) {
-        String sql = "insert into account(user_sex, user_nickName) values(?,?)";
+        String sql = "insert into account(user_sex, user_nickName,department) values(?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {
                     pstmt.setString(1,account.getNickName());
                     pstmt.setString(2,account.getSex());
+                    pstmt.setString(3,account.getDepartment());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

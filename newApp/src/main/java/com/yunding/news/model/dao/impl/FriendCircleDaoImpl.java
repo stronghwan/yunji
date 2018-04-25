@@ -58,6 +58,7 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
                     friendCircle.setfUserId(rs.getInt("user_id"));
                     friendCircle.setCreateTime(rs.getTime("f_create_time"));
                     friendCircle.setfContent(rs.getString("f_content"));
+                    friendCircle.setUserName(rs.getString("user_name"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

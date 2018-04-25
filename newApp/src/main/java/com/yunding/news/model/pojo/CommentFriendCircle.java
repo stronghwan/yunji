@@ -15,12 +15,17 @@ public class CommentFriendCircle implements Serializable{
     int fUserId;
     Date createTime;
     String fContent;
+    String username;
     // 评论的内容
     int cId;
     int cUserId; // 发说说人的id
     Date c_time;
     String cContent;
 
+    // 点赞的内容
+    private int status;
+    // 图片的内容
+    private String pUrl;
     public int getfId() {
         return fId;
     }
@@ -83,5 +88,29 @@ public class CommentFriendCircle implements Serializable{
 
     public void setcContent(String cContent) {
         this.cContent = cContent;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getpUrl() {
+        return pUrl;
+    }
+
+    public void setpUrl(String pUrl) {
+        this.pUrl = pUrl;
     }
 }

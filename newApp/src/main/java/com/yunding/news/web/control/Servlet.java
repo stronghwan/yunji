@@ -1,5 +1,7 @@
 package com.yunding.news.web.control;
 
+import com.yunding.news.model.pojo.Account;
+import com.yunding.news.model.pojo.Attention;
 import com.yunding.news.model.service.ServiceFactory;
 
 import javax.servlet.ServletException;

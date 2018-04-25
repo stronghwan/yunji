@@ -39,6 +39,13 @@ public interface ICommonDao<T extends Serializable> {
     int findUserId(String name);
 
     /**
+     * 通过注册表中的id找到对应的用户名
+     * @param id
+     * @return
+     */
+    String findUserName(int id);
+
+    /**
      * 通过传入的id查找对象，主要用于朋友圈
      * @param id
      * @return
