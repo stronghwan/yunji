@@ -6,6 +6,7 @@ import com.yunding.news.model.pojo.Pictures;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @TODO
@@ -16,8 +17,8 @@ import java.sql.SQLException;
 public class PictureDaoImpl extends CommonDaoImpl<Pictures>{
     @Override
     public int save(final Pictures pictures) {
-        String sql = "insert into pictures(user_id,p_url,user_name) values" +
-                "(?,?,?)";
+        String sql = "insert into pictures(user_id,p_url,user_name,f_id) values" +
+                "(?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -25,6 +26,7 @@ public class PictureDaoImpl extends CommonDaoImpl<Pictures>{
                     pstmt.setInt(1,pictures.getUserId());
                     pstmt.setString(2,pictures.getUrl());
                     pstmt.setString(3,pictures.getUserName());
+                    pstmt.setInt(4,pictures.getfId());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -33,8 +35,8 @@ public class PictureDaoImpl extends CommonDaoImpl<Pictures>{
     }
 
     @Override
-    public Pictures findByUserId(final int id) {
-        String sql = "select * from pictures where user_id = ?";
+    public Pictures findByUserIdSingle(final int id) {
+        String sql = "select * from pictures where f_id = ?";
         return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {

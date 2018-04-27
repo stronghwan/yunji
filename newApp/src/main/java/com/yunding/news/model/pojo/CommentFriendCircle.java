@@ -1,10 +1,12 @@
 package com.yunding.news.model.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
- * @TODO
+ * @二次修改  加一些集合属性
  * @Author Hao Wan
  * @Verison
  * @Date2018/4/20-14-41
@@ -26,6 +28,9 @@ public class CommentFriendCircle implements Serializable{
     private int status;
     // 图片的内容
     private String pUrl;
+    // 集合的添加
+    List<FriendCircle>  friendCircleList = new ArrayList<FriendCircle>();
+    List<Comment> commentList = new ArrayList<Comment>();
     public int getfId() {
         return fId;
     }
@@ -112,5 +117,21 @@ public class CommentFriendCircle implements Serializable{
 
     public void setpUrl(String pUrl) {
         this.pUrl = pUrl;
+    }
+
+    public List<FriendCircle> getFriendCircleList() {
+        return friendCircleList;
+    }
+
+    public void setFriendCircleList(List<FriendCircle> friendCircleList) {
+        this.friendCircleList = friendCircleList;
+    }
+
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
     }
 }

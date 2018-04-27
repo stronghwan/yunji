@@ -14,6 +14,7 @@ public class Pictures implements Serializable{
     private int userId;
     private String url;
     private String userName;
+    private int fId;            // 修改
 
     public int getpId() {
         return pId;
@@ -45,5 +46,13 @@ public class Pictures implements Serializable{
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public int getfId() {
+        return fId;
+    }
+
+    public void setfId(int fId) {
+        this.fId = fId;
     }
 }

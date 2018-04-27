@@ -54,6 +54,7 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
             public FriendCircle processRow(ResultSet rs) {
                 FriendCircle friendCircle = null;
                 try {
+                    friendCircle =new FriendCircle();
                     friendCircle.setfId(rs.getInt("f_id"));
                     friendCircle.setfUserId(rs.getInt("user_id"));
                     friendCircle.setCreateTime(rs.getTime("f_create_time"));
@@ -68,9 +69,9 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
     }
 
     @Override
-    public FriendCircle findByUserId(final int id) {
+    public List<FriendCircle> findByUserId(final int id) {
         String sql = "select * from friend_circles where user_id = ?";
-        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+        return JdbcTemplate.query(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {

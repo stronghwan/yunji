@@ -7,6 +7,7 @@ import com.yunding.news.model.pojo.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,24 +22,40 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
     public List<CommentFriendCircle> findCommentFriend(String name) {
         List<Attention> aList = DaoFactory.getDao("attention").findAttByUserId(findUserId(name));
         List<CommentFriendCircle> cfList = null;
+        CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
         for (Attention list : aList) {
             final int aUserId = list.getAuserId();
-            Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
-            // 将返回值为对象的放这 通过id查询点赞的内容
-            Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
-            // 将返回值为对象的放这 通过id查询的朋友圈
-            FriendCircle friendCircle = (FriendCircle) DaoFactory.getDao("fc").findByUserId(aUserId);
-            // 将返回值为对象的放这 通过id查询的评论
-            Comment comment = (Comment) DaoFactory.getDao("comment").findByUserId(aUserId);
-            // 将这两个对象的值放在CommentFriendCircle这个对象中。
-            CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
-            commentFriendCircle.setUsername(friendCircle.getUserName());
-            commentFriendCircle.setCreateTime(friendCircle.getCreateTime());
-            commentFriendCircle.setfContent(friendCircle.getfContent());
-            commentFriendCircle.setcContent(comment.getcContent());
-            commentFriendCircle.setStatus(likes.getStatus());
-            commentFriendCircle.setpUrl(pictures.getUrl());
+            List<FriendCircle> fList = DaoFactory.getDao("fc").findByUserId(aUserId);
+            List<Comment> cList = null;
+            for (FriendCircle flist : fList) {
+                // 将说说内容放入
+                commentFriendCircle.setFriendCircleList((List<FriendCircle>) flist);
+                cList = DaoFactory.getDao("comment").findByUserId(flist.getfId());
+                for (Comment clist : cList) {
+                    commentFriendCircle.setCommentList(cList);
+                }
+                Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
+                Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
+                commentFriendCircle.setStatus(likes.getStatus());
+                commentFriendCircle.setpUrl(pictures.getUrl());
+            }
             cfList.add(commentFriendCircle);
+//            Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
+//            // 将返回值为对象的放这 通过id查询点赞的内容
+//            Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
+//            // 将返回值为对象的放这 通过id查询的朋友圈
+//            FriendCircle friendCircle = (FriendCircle) DaoFactory.getDao("fc").findByUserId(aUserId);
+//            // 将返回值为对象的放这 通过id查询的评论
+//            Comment comment = (Comment) DaoFactory.getDao("comment").findByUserId(aUserId);
+//            // 将这两个对象的值放在CommentFriendCircle这个对象中。
+//            CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
+//            commentFriendCircle.setUsername(friendCircle.getUserName());
+//            commentFriendCircle.setCreateTime(friendCircle.getCreateTime());
+//            commentFriendCircle.setfContent(friendCircle.getfContent());
+//            commentFriendCircle.setcContent(comment.getcContent());
+//            commentFriendCircle.setStatus(likes.getStatus());
+//            commentFriendCircle.setpUrl(pictures.getUrl());
+//            cfList.add(commentFriendCircle);
         }
         return null;
     }

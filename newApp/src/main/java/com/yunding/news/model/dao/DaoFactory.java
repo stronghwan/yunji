@@ -46,6 +46,14 @@ public final class DaoFactory {
             dao = new CommentFriendDaoImpl();
             map.put(name,dao);
         }
+        if("like".equals(name)){
+            dao = new LikeDaoImpl();
+            map.put(name,dao);
+        }
+        if("picture".equals(name)){
+            dao = new PictureDaoImpl();
+            map.put(name,dao);
+        }
         return dao;
     }
 }

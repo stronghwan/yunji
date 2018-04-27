@@ -58,4 +58,34 @@ public abstract class CommonServiceImpl<T extends java.io.Serializable> implemen
     public int mosdifiedUserInfo(String name) {
         return 0;
     }
+
+    @Override
+    public int save(int id) {
+        return 0;
+    }
+
+    @Override
+    public String findUserName(int id) {
+        return null;
+    }
+
+    @Override
+    public List<T> findByUserId(int id) {
+        return null;
+    }
+
+    @Override
+    public T findByUserIdSingle(int id) {
+        return null;
+    }
+
+    @Override
+    public List<T> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<T> findCommentFriend(String name) {
+        return null;
+    }
 }

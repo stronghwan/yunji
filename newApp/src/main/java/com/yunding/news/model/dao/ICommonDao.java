@@ -50,7 +50,8 @@ public interface ICommonDao<T extends Serializable> {
      * @param id
      * @return
      */
-    T findByUserId(int id);
+    List<T> findByUserId(int id);
+    T findByUserIdSingle(int id);
 
     /**
      * 用来给其他的表增加用户注册时注册表产生的id

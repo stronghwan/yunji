@@ -6,6 +6,7 @@ import com.yunding.news.model.pojo.Likes;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * 点赞实现类
@@ -16,8 +17,8 @@ import java.sql.SQLException;
 public class LikeDaoImpl extends CommonDaoImpl<Likes>{
     @Override
     public int save(final Likes likes) {
-        String sql = "insert into likes(user_id,l_status,userself_name,userby_name) values" +
-                "(?,?,?,?)";
+        String sql = "insert into likes(user_id,l_status,userself_name,userby_name,f_id) values" +
+                "(?,?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -26,6 +27,7 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
                     pstmt.setInt(2,likes.getStatus());
                     pstmt.setString(3,likes.getUserSelfName());
                     pstmt.setString(4,likes.getUserByName());
+                    pstmt.setInt(5,likes.getfId());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -34,8 +36,8 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
     }
 
     @Override
-    public Likes findByUserId(final int id) {
-        String sql = "select * from likes where user_id = ?";
+    public Likes findByUserIdSingle(final int id) {
+        String sql = "select * from likes where f_id = ?";
         return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {

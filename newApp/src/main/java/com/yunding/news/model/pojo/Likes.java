@@ -15,6 +15,7 @@ public class Likes implements Serializable{
     private int status;
     private String userSelfName;
     private String  userByName;
+    private int fId;             // 修改
 
     public int getlId() {
         return lId;
@@ -54,5 +55,13 @@ public class Likes implements Serializable{
 
     public void setUserByName(String userByName) {
         this.userByName = userByName;
+    }
+
+    public int getfId() {
+        return fId;
+    }
+
+    public void setfId(int fId) {
+        this.fId = fId;
     }
 }

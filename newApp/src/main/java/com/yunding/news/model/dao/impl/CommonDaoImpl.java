@@ -72,7 +72,7 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     }
 
     @Override
-    public T findByUserId(int id) {
+    public List<T> findByUserId(int id) {
         return null;
     }
 
@@ -83,6 +83,11 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
 
     @Override
     public String findUserName(int id) {
+        return null;
+    }
+
+    @Override
+    public T findByUserIdSingle(int id) {
         return null;
     }
 }

@@ -1,8 +1,6 @@
 package com.yunding.news.model.service;
 
-import com.yunding.news.model.service.impl.AccountServiceImpl;
-import com.yunding.news.model.service.impl.AttentionServiceImpl;
-import com.yunding.news.model.service.impl.PersonalCenterServiceImpl;
+import com.yunding.news.model.service.impl.*;
 
 import javax.swing.*;
 import java.util.WeakHashMap;
@@ -35,6 +33,25 @@ public final class ServiceFactory {
         }
         if("attention".equals(name)){
             service = new AttentionServiceImpl();
+            map.put(name,service);
+        }
+        if("fc".equals(name)){
+            service = new FriendCircleServiceImpl();
+            map.put(name,service);
+        }
+        if("comment".equals(name)){
+            service = new CommentServiceImpl();
+            map.put(name,service);
+        }
+        if("fcMix".equals(name)){
+            service = new CommentFriendServiceImpl();
+            map.put(name,service);
+        }
+        if("like".equals(name)){
+            service = new LikesServiceImpl();
+        }
+        if("picture".equals(name)){
+            service = new PictureSercviceImpl();
             map.put(name,service);
         }
         return service;

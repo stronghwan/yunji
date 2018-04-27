@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @TODO
@@ -22,7 +23,7 @@ public class CommentDaoImpl extends CommonDaoImpl<Comment>{
      */
     @Override
     public int save(final Comment comment) {
-        String sql = "insert into comments(user_id,c_content,c_time) values(?,?,?)";
+        String sql = "insert into comments(user_id,c_content,c_time,f_id) values(?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -30,6 +31,7 @@ public class CommentDaoImpl extends CommonDaoImpl<Comment>{
                     pstmt.setInt(1, comment.getcUserId());
                     pstmt.setString(2, comment.getcContent());
                     pstmt.setDate(3, (Date) comment.getC_time());
+                    pstmt.setInt(4,comment.getfId());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -38,9 +40,9 @@ public class CommentDaoImpl extends CommonDaoImpl<Comment>{
     }
 
     @Override
-    public Comment findByUserId(final int id) {
-        String sql = "select * from comments where user_id = ?";
-        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+    public List<Comment> findByUserId(final int id) {
+        String sql = "select * from comments where f_id = ?";
+        return JdbcTemplate.query(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {
