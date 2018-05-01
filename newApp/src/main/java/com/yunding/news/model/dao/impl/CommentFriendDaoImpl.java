@@ -38,6 +38,7 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
                 Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
                 commentFriendCircle.setStatus(likes.getStatus());
                 commentFriendCircle.setpUrl(pictures.getUrl());
+
             }
             cfList.add(commentFriendCircle);
 //            Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
