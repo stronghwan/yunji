@@ -27,18 +27,18 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
             final int aUserId = list.getAuserId();
             List<FriendCircle> fList = DaoFactory.getDao("fc").findByUserId(aUserId);
             List<Comment> cList = null;
+            List<String> lList = null;
+            commentFriendCircle.setFriendCircleList(fList);
             for (FriendCircle flist : fList) {
                 // 将说说内容放入
-                commentFriendCircle.setFriendCircleList((List<FriendCircle>) flist);
                 cList = DaoFactory.getDao("comment").findByUserId(flist.getfId());
-                for (Comment clist : cList) {
-                    commentFriendCircle.setCommentList(cList);
-                }
+                lList = DaoFactory.getDao("like").findUserNameByFId(flist.getfId());
                 Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
                 Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
                 commentFriendCircle.setStatus(likes.getStatus());
                 commentFriendCircle.setpUrl(pictures.getUrl());
-
+                commentFriendCircle.setCommentList(cList);
+                commentFriendCircle.setLikesUserName(lList);
             }
             cfList.add(commentFriendCircle);
 //            Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);

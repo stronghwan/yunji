@@ -54,6 +54,13 @@ public interface ICommonDao<T extends Serializable> {
     T findByUserIdSingle(int id);
 
     /**
+     * 通过朋友圈的id找到点赞名字的集合
+     * @param id 朋友圈的id
+     * @return
+     */
+    List<String> findUserNameByFId(int id);
+
+    /**
      * 用来给其他的表增加用户注册时注册表产生的id
      * @param id
      * @return

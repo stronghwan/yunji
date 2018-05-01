@@ -31,6 +31,16 @@ public class CommentFriendCircle implements Serializable{
     // 集合的添加
     List<FriendCircle>  friendCircleList = new ArrayList<FriendCircle>();
     List<Comment> commentList = new ArrayList<Comment>();
+    List<String> likesUserName = new ArrayList<String>();
+
+    public List<String> getLikesUserName() {
+        return likesUserName;
+    }
+
+    public void setLikesUserName(List<String> likesUserName) {
+        this.likesUserName = likesUserName;
+    }
+
     public int getfId() {
         return fId;
     }

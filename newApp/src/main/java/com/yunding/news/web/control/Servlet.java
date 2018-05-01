@@ -3,6 +3,7 @@ package com.yunding.news.web.control;
 import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.Attention;
 import com.yunding.news.model.service.ServiceFactory;
+import net.sf.json.JSONArray;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,5 @@ import java.io.IOException;
 public class Servlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        JSo
     }
 }

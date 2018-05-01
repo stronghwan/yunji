@@ -69,4 +69,34 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
             }
         };
     }
+
+    @Override
+    public List<String> findUserNameByFId(final int id) {
+        String sql = "select userself_name from likes where f_id = ?";
+        return JdbcTemplate.query(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setInt(1,id);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        },createHandles());
+    }
+
+    private JdbcTemplate.RowCallBackHandle<String> createHandles() {
+        return new JdbcTemplate.RowCallBackHandle<String>() {
+            @Override
+            public String processRow(ResultSet rs) {
+                String name = null;
+                try {
+                    name = rs.getString("user_name");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return name;
+            }
+        };
+    }
 }

@@ -90,4 +90,9 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     public T findByUserIdSingle(int id) {
         return null;
     }
+
+    @Override
+    public List<String> findUserNameByFId(int id) {
+        return null;
+    }
 }
