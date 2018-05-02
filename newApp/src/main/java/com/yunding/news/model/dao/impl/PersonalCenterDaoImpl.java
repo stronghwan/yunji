@@ -23,7 +23,7 @@ public class PersonalCenterDaoImpl extends CommonDaoImpl<PersonalCenter>{
      */
     @Override
     public int save(final PersonalCenter personalCenter) {
-        String sql = "insert into personalCenter(w_sex,w_signature,w_address,w_phone,w_email,w_department) values(?,?,?,?,?,?)";
+        String sql = "insert into personalCenter(w_sex,w_signature,w_address,w_phone,w_email,w_department,user_id) values(?,?,?,?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -34,6 +34,7 @@ public class PersonalCenterDaoImpl extends CommonDaoImpl<PersonalCenter>{
                     pstmt.setString(4,personalCenter.getPhone());
                     pstmt.setString(5,personalCenter.getEmail());
                     pstmt.setString(6,personalCenter.getDepartment());
+                    pstmt.setInt(7,personalCenter.getUserId());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

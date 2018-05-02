@@ -20,13 +20,13 @@ public class PersonalCenter implements Serializable {
     private String phone;
     private String email;
     private String department;
-    private String userId;
+    private int userId;
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
