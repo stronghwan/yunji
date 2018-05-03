@@ -54,6 +54,12 @@ public interface ICommonDao<T extends Serializable> {
     T findByUserIdSingle(int id);
 
     /**
+     *   通过前端传入的email判断
+     * @param email 返回的是电子邮箱
+     * @return
+     */
+    String findByuserEmail(String email);
+    /**
      * 通过朋友圈的id找到点赞名字的集合
      * @param id 朋友圈的id
      * @return

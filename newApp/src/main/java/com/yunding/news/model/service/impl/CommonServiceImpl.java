@@ -88,4 +88,9 @@ public abstract class CommonServiceImpl<T extends java.io.Serializable> implemen
     public List<T> findCommentFriend(String name) {
         return null;
     }
+
+    @Override
+    public String findByUserEmail(String email) {
+        return null;
+    }
 }

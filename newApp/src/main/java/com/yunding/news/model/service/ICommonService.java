@@ -25,4 +25,5 @@ public interface ICommonService<T extends java.io.Serializable> {
     List<T> findAttByUserId(int id);
     List<T> findAll();
     List<T> findCommentFriend(String name);
+    String findByUserEmail(String email);
 }
