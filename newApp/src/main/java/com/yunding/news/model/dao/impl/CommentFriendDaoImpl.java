@@ -33,8 +33,8 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
                 // 将说说内容放入
                 cList = DaoFactory.getDao("comment").findByUserId(flist.getfId());
                 lList = DaoFactory.getDao("like").findUserNameByFId(flist.getfId());
-                Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserId(aUserId);
-                Likes likes = (Likes) DaoFactory.getDao("like").findByUserId(aUserId);
+                Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserIdSingle(flist.getfId());
+                Likes likes = (Likes) DaoFactory.getDao("like").findByUserIdSingle(flist.getfId());
                 commentFriendCircle.setStatus(likes.getStatus());
                 commentFriendCircle.setpUrl(pictures.getUrl());
                 commentFriendCircle.setCommentList(cList);
@@ -58,6 +58,6 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
 //            commentFriendCircle.setpUrl(pictures.getUrl());
 //            cfList.add(commentFriendCircle);
         }
-        return null;
+        return cfList;
     }
 }

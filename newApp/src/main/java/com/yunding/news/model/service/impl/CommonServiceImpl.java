@@ -91,6 +91,17 @@ public abstract class CommonServiceImpl<T extends java.io.Serializable> implemen
 
     @Override
     public String findByUserEmail(String email) {
+
+        return null;
+    }
+
+    @Override
+    public List<T> findCommon(String common) {
+        return null;
+    }
+
+    @Override
+    public List<String> findUserNameByFId(int id) {
         return null;
     }
 }

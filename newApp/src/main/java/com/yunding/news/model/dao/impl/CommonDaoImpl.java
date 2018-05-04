@@ -100,4 +100,9 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     public String findByuserEmail(String email) {
         return null;
     }
+
+    @Override
+    public List<T> findCommon(String common) {
+        return null;
+    }
 }

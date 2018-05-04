@@ -88,4 +88,5 @@ public interface ICommonDao<T extends Serializable> {
     List<T> findAttByUserId(int id);
     List<T> findAll();
     List<T> findCommentFriend(String name);
+    List<T> findCommon(String common);
 }
