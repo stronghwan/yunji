@@ -1,6 +1,7 @@
 package com.yunding.news.model.pojo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * @云圈实体类
@@ -14,6 +15,15 @@ public class YunCircles implements Serializable{
     private String userName;
     private String yContent;
     private String kindof;
+    private Date y_time;
+
+    public Date getY_time() {
+        return y_time;
+    }
+
+    public void setY_time(Date y_time) {
+        this.y_time = y_time;
+    }
 
     public int getyId() {
         return yId;

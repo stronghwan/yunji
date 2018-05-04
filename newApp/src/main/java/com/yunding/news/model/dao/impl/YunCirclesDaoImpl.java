@@ -31,6 +31,7 @@ public class YunCirclesDaoImpl extends CommonDaoImpl<YunCircles>{
                     pstmt.setString(2,yunCircles.getUserName());
                     pstmt.setString(3,yunCircles.getyContent());
                     pstmt.setString(4,yunCircles.getKindof());
+                    pstmt.setDate(5,yunCircles.getY_time());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -65,6 +66,7 @@ public class YunCirclesDaoImpl extends CommonDaoImpl<YunCircles>{
                     yunCircles.setUserName(rs.getString("user_name"));
                     yunCircles.setUserId(rs.getInt("user_id"));
                     yunCircles.setyContent(rs.getString("y_content"));
+                    yunCircles.setY_time(rs.getDate("y_time"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
