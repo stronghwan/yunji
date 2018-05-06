@@ -5,7 +5,6 @@ import com.yunding.news.model.pojo.Attention;
 import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONObject;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +14,7 @@ import java.io.PrintWriter;
 /*
  * 添加关注的用户至关注列表
  * @Author: HJY
+ * time
  * */
 
 @WebServlet(name = "AddFocuses", urlPatterns = {"/main/java/com.yunding.news/web/control/AddFocuses"})
@@ -59,7 +59,7 @@ public class AddFocuses extends HttpServlet {
         pr.close();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
 }
