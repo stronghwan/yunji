@@ -28,7 +28,7 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {
-                    pstmt.setInt(1,friendCircle.getfId());
+                    pstmt.setInt(1,friendCircle.getfUserId());
                     pstmt.setDate(2, (Date) friendCircle.getCreateTime());
                     pstmt.setString(3,friendCircle.getfContent());
                     pstmt.setString(4,friendCircle.getUserName());
