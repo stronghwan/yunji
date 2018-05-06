@@ -3,6 +3,7 @@ package com.yunding.news.web.control;
 import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.Attention;
 import com.yunding.news.model.service.ServiceFactory;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.yunding.news.model.service.ServiceFactory.getService;
 
 /*
  *获取当前用户的关注列表
@@ -37,14 +42,18 @@ public class FocusList extends HttpServlet {
         fl.getString("");
         String name = "";
         Account account = new Account();
-        account = (Account) ServiceFactory.getService("user").findByUserName(name);
+        account = (Account) getService("user").findByUserName(name);
 
         if (name.equals(account.getName())) {
             Attention attention = new Attention();
-            ServiceFactory.getService("user").findUserId("name");
-            ServiceFactory.getService("user").findUserId("user_id");
-            ServiceFactory.getService("user").findUserId("userName");
-
+            int uid = getService("user").findUserId(name);
+            List<Attention> at = ServiceFactory.getService("attention").findAttByUserId(uid);
+            List<String> us = new ArrayList<String>();
+            for (Attention AT : at) {
+                AT.getAuserName();
+                us.add(AT.getAuserName());
+                response.getWriter().write(JSONArray.fromObject(us).toString());
+            }
         }
         PrintWriter pr = response.getWriter();
         pr.write("FocusList");
