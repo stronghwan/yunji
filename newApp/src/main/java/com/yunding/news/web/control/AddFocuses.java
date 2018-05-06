@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 /*
  * 添加关注的用户至关注列表
  * @Author: HJY
- * time
+ *
  * */
 
 @WebServlet(name = "AddFocuses", urlPatterns = {"/main/java/com.yunding.news/web/control/AddFocuses"})
