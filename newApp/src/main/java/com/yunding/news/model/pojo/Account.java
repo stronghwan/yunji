@@ -15,7 +15,7 @@ public class Account implements Serializable{
     private String sex;
     private String phone;
     private String email;
-    private int choice;
+    private String choice;
     private String answer;
     private String status;
     private String nickName;
@@ -60,11 +60,11 @@ public class Account implements Serializable{
         this.email = email;
     }
 
-    public int getChoice() {
+    public String getChoice() {
         return choice;
     }
 
-    public void setChoice(int choice) {
+    public void setChoice(String choice) {
         this.choice = choice;
     }
 

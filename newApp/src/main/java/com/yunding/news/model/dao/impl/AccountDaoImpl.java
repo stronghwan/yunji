@@ -31,7 +31,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     pstmt.setString(3,account.getSex());
                     pstmt.setString(4,account.getPhone());
                     pstmt.setString(5,account.getEmail());
-                    pstmt.setInt(6,account.getChoice());
+                    pstmt.setString(6,account.getChoice());
                     pstmt.setString(7,account.getAnswer());
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -64,7 +64,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     account.setSex(rs.getString("user_sex"));
                     account.setPhone(rs.getString("user_phone"));
                     account.setEmail(rs.getString("user_email"));
-                    account.setChoice(rs.getInt("question_choice"));
+                    account.setChoice(rs.getString("question_choice"));
                     account.setAnswer(rs.getString("answer"));
                     account.setStatus(rs.getString("status"));
                     account.setDepartment(rs.getString("department"));
@@ -190,7 +190,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                 try {
                     pstmt.setString(1,account.getPhone());
                     pstmt.setString(2,account.getEmail());
-                    pstmt.setInt(3,account.getChoice());
+                    pstmt.setString(3,account.getChoice());
                     pstmt.setString(4,account.getAnswer());
                     pstmt.setString(5,account.getName());
                 } catch (SQLException e) {
