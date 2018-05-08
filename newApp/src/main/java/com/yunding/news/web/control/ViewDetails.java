@@ -45,7 +45,7 @@ public class ViewDetails extends HttpServlet {
         personalCenter.getPhone();
         personalCenter.getEmail();
         personalCenter.getSignature();
-
+//
         PrintWriter pr = response.getWriter();
         pr.write("ViewDetails");
         pr.flush();
