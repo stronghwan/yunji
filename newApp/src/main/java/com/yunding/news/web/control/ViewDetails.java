@@ -1,9 +1,7 @@
 package com.yunding.news.web.control;
 
-import com.yunding.news.model.pojo.Account;
-import com.yunding.news.model.pojo.Attention;
+import com.yunding.news.model.pojo.PersonalCenter;
 import com.yunding.news.model.service.ServiceFactory;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.yunding.news.model.service.ServiceFactory.getService;
 
 /*
  * 查看关注用户的详细信息
@@ -42,24 +36,36 @@ public class ViewDetails extends HttpServlet {
         JSONObject vd = new JSONObject();
         vd.getString("");
         String name = "";
-        Account account = new Account();
-        account = (Account) ServiceFactory.getService("user").findByUserName(name);
 
-        if (name.equals(account.getName())) {
-            Attention attention = new Attention();
-            int ud = getService("user").findUserId(name);
-            List<Attention> uat= ServiceFactory.getService("attention").findAttByUserId(ud);
-            List<String> udl = new ArrayList<String>();
-            for (Attention Dat: uat) {
-                Dat.getAuserName();
-                udl.add(Dat.getAuserName());
-                response.getWriter().write(JSONArray.fromObject(udl).toString());
-            }
-        }
+        PersonalCenter personalCenter = new PersonalCenter();
+        personalCenter = (PersonalCenter) ServiceFactory.getService("personalCenter").findByUserName(name);
+        personalCenter.getSex();
+        personalCenter.getDepartment();
+        personalCenter.getAddress();
+        personalCenter.getPhone();
+        personalCenter.getEmail();
+        personalCenter.getSignature();
+
         PrintWriter pr = response.getWriter();
         pr.write("ViewDetails");
         pr.flush();
         pr.close();
+
+//        Account account = new Account();
+//        account = (Account) ServiceFactory.getService("user").findByUserName(name);
+//
+//        if (name.equals(account.getName())) {
+//            Attention attention = new Attention();
+//            int ud = getService("user").findUserId(name);
+//            List<Attention> uat= ServiceFactory.getService("attention").findAttByUserId(ud);
+//            List<String> udl = new ArrayList<String>();
+//            for (Attention Dat: uat) {
+//                Dat.getAuserName();
+//                udl.add(Dat.getAuserName());
+//                response.getWriter().write(JSONArray.fromObject(udl).toString());
+//            }
+//        }
+
 
     }
 
