@@ -39,7 +39,7 @@ public class ViewDetails extends HttpServlet {
 
 
         String JSON = request.getParameter("ViewDetails");
-        JSONObject vd = new JSONObject();
+        JSONObject vd =JSONObject.fromObject(JSON);
         vd.getString("");
         String name = "";
         Account account = new Account();

@@ -144,4 +144,5 @@ public class CommentFriendCircle implements Serializable{
     public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
     }
+
 }

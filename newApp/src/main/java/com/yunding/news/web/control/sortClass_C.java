@@ -1,0 +1,21 @@
+package com.yunding.news.web.control;
+/*
+ * @Name: 朋友圈•收藏（时间排序）
+ * @Author:Farmerzhang
+ * @Date: 2018/5/3
+ * @Time: 14:54
+ */
+import java.util.Comparator;
+
+public class sortClass_C implements Comparator {
+
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        collect_ collect_1= (collect_) o1;
+        collect_ collect_2= (collect_) o2;
+        int flag=-(((collect_) o1).getfTime().compareTo(((collect_) o2).getfTime()));
+        return flag;
+    }
+
+}
