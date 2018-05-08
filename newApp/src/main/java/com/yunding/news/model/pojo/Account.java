@@ -15,8 +15,11 @@ public class Account implements Serializable{
     private String sex;
     private String phone;
     private String email;
-    private int choice;
+    private String choice;
     private String answer;
+    private String status;
+    private String nickName;
+    private String department;
     public int getId() {
         return id;
     }
@@ -57,11 +60,11 @@ public class Account implements Serializable{
         this.email = email;
     }
 
-    public int getChoice() {
+    public String getChoice() {
         return choice;
     }
 
-    public void setChoice(int choice) {
+    public void setChoice(String choice) {
         this.choice = choice;
     }
 
@@ -79,5 +82,29 @@ public class Account implements Serializable{
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

@@ -26,6 +26,12 @@ public interface ICommonDao<T extends Serializable> {
     int modifiedUserInfo(T t);
 
     /**
+     * 通过用户名修改状态
+     * @param name
+     * @return
+     */
+    int modifiedUserInfo(String name);
+    /**
      * 通过登录用户注册的用户名查找此用户的id
      * @param name 用户名
      * @return id
@@ -33,11 +39,32 @@ public interface ICommonDao<T extends Serializable> {
     int findUserId(String name);
 
     /**
+     * 通过注册表中的id找到对应的用户名
+     * @param id
+     * @return
+     */
+    String findUserName(int id);
+
+    /**
      * 通过传入的id查找对象，主要用于朋友圈
      * @param id
      * @return
      */
-    T findByUserId(int id);
+    List<T> findByUserId(int id);
+    T findByUserIdSingle(int id);
+
+    /**
+     *   通过前端传入的email判断
+     * @param email 返回的是电子邮箱
+     * @return
+     */
+    String findByuserEmail(String email);
+    /**
+     * 通过朋友圈的id找到点赞名字的集合
+     * @param id 朋友圈的id
+     * @return
+     */
+    List<String> findUserNameByFId(int id);
 
     /**
      * 用来给其他的表增加用户注册时注册表产生的id
@@ -61,4 +88,5 @@ public interface ICommonDao<T extends Serializable> {
     List<T> findAttByUserId(int id);
     List<T> findAll();
     List<T> findCommentFriend(String name);
+    List<T> findCommon(String common);
 }

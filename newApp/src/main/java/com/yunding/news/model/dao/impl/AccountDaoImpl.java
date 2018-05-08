@@ -31,7 +31,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     pstmt.setString(3,account.getSex());
                     pstmt.setString(4,account.getPhone());
                     pstmt.setString(5,account.getEmail());
-                    pstmt.setInt(6,account.getChoice());
+                    pstmt.setString(6,account.getChoice());
                     pstmt.setString(7,account.getAnswer());
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -55,16 +55,19 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
     private JdbcTemplate.RowCallBackHandle<Account> createHandles() {
         return new JdbcTemplate.RowCallBackHandle<Account>() {
             public Account processRow(ResultSet rs) {
-                Account account = new Account();
+                Account account = null;
                 try {
+                    account = new Account();
                     account.setId(rs.getInt("user_id"));
                     account.setName(rs.getString("user_name"));
                     account.setPassword(rs.getString("user_password"));
                     account.setSex(rs.getString("user_sex"));
                     account.setPhone(rs.getString("user_phone"));
                     account.setEmail(rs.getString("user_email"));
-                    account.setChoice(rs.getInt("question_choice"));
+                    account.setChoice(rs.getString("question_choice"));
                     account.setAnswer(rs.getString("answer"));
+                    account.setStatus(rs.getString("status"));
+                    account.setDepartment(rs.getString("department"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -85,6 +88,37 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                 }
             }
         },createHandles());
+    }
+
+    @Override
+    public String findByuserEmail(final String email) {
+        String sql = "select user_email from account where user_email = ?";
+        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,email);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        },createHandleEmail());
+    }
+
+    private JdbcTemplate.RowCallBackHandle<String> createHandleEmail() {
+        return new JdbcTemplate.RowCallBackHandle<String>() {
+            @Override
+            public String processRow(ResultSet rs) {
+                Account account = null;
+                try {
+                    account = new Account();
+                    account.setEmail(rs.getString("user_email"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return account.getEmail();
+            }
+        };
     }
 
     /**
@@ -113,6 +147,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
             public Integer processRow(ResultSet rs) {
                 Account account = null;
                 try {
+                    account = new Account();
                     account.setId(rs.getInt("user_id"));
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -147,14 +182,15 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
 
     @Override
     public int saveByStepTwo(final Account account) {
-        String sql = "insert into account(user_phone,user_email,question_choice,answer) values(?,?,?,?) where user_name=?";
+        String sql = "update account set user_phone=?,user_email=?,question_choice=?,answer=?) " +
+                "where user_name=?";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {
                     pstmt.setString(1,account.getPhone());
                     pstmt.setString(2,account.getEmail());
-                    pstmt.setInt(3,account.getChoice());
+                    pstmt.setString(3,account.getChoice());
                     pstmt.setString(4,account.getAnswer());
                     pstmt.setString(5,account.getName());
                 } catch (SQLException e) {
@@ -165,9 +201,22 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
     }
 
     @Override
-    public int saveByStepThree(Account account) {
-        // 暂时先返回零
-        return 0;
+    public int saveByStepThree(final Account account) {
+        String sql = "update account set user_sex=?, user_nickName=?,department=? " +
+                "where user_name = ?";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,account.getNickName());
+                    pstmt.setString(2,account.getSex());
+                    pstmt.setString(3,account.getDepartment());
+                    pstmt.setString(4,account.getName());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     /**
@@ -185,6 +234,21 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     pstmt.setString(1,account.getPassword());
                     pstmt.setString(1,account.getName());
 
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public int modifiedUserInfo(final String name) {
+        String sql = "update account set status = 1 where user_name = ?";
+        return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,name);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

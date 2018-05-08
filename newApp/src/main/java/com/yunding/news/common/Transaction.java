@@ -14,8 +14,6 @@ public final class Transaction {
         try {
             Connection conn = ConnectionManager.getConnection();
             conn.setAutoCommit(false);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -25,12 +23,6 @@ public final class Transaction {
         try {
             Connection conn = ConnectionManager.getConnection();
             conn.commit();
-        } catch (ClassNotFoundException e) {
-            try {
-                throw new TransactionExpection(e);
-            } catch (TransactionExpection transactionExpection) {
-                transactionExpection.printStackTrace();
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -39,12 +31,6 @@ public final class Transaction {
     public static void rollBack(){
         try {
             ConnectionManager.getConnection().rollback();
-        } catch (ClassNotFoundException e) {
-            try {
-                throw new TransactionExpection(e);
-            } catch (TransactionExpection transactionExpection) {
-                transactionExpection.printStackTrace();
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

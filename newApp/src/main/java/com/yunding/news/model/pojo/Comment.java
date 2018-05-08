@@ -10,10 +10,20 @@ import java.util.Date;
  * @Date2018/4/20-13-49
  */
 public class Comment implements Serializable{
-    int cId;
-    int cUserId; // 发说说人的id
-    Date c_time;
-    String cContent;
+    private int cId;
+    private int cUserId; // 发说说人的id
+    private Date c_time;
+    private String cContent;
+    private int fId;    // 修改
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getcId() {
         return cId;
@@ -45,5 +55,13 @@ public class Comment implements Serializable{
 
     public void setcContent(String cContent) {
         this.cContent = cContent;
+    }
+
+    public int getfId() {
+        return fId;
+    }
+
+    public void setfId(int fId) {
+        this.fId = fId;
     }
 }

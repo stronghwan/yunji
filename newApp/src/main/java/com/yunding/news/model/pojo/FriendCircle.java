@@ -14,6 +14,7 @@ public class FriendCircle implements Serializable{
     int fUserId;
     Date createTime;
     String fContent;
+    String userName;
 
     public int getfId() {
         return fId;
@@ -45,5 +46,13 @@ public class FriendCircle implements Serializable{
 
     public void setfContent(String fContent) {
         this.fContent = fContent;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
