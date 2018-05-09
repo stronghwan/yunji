@@ -62,4 +62,9 @@ public class AccountServiceImpl extends CommonServiceImpl<Account>{
     public int mosdifiedUserInfo(String name) {
         return DaoFactory.getDao("user").modifiedUserInfo(name);
     }
+
+    @Override
+    public String findByUserEmail(String email) {
+        return DaoFactory.getDao("user").findByuserEmail(email);
+    }
 }

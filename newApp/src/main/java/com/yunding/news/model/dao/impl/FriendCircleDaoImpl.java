@@ -23,14 +23,15 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
      */
     @Override
     public int save(final FriendCircle friendCircle) {
-        String sql = "insert into friend_circles(user_id,f_create_time,f_content) values(?,?,?)";
+        String sql = "insert into friend_circles(user_id,f_create_time,f_content,user_name) values(?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
                 try {
-                    pstmt.setInt(1,friendCircle.getfId());
+                    pstmt.setInt(1,friendCircle.getfUserId());
                     pstmt.setDate(2, (Date) friendCircle.getCreateTime());
                     pstmt.setString(3,friendCircle.getfContent());
+                    pstmt.setString(4,friendCircle.getUserName());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

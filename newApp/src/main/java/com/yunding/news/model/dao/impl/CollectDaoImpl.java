@@ -17,8 +17,8 @@ import java.util.List;
 public class CollectDaoImpl extends CommonDaoImpl<Collect>{
     @Override
     public int save(final Collect collect) {
-        String sql = "insert into collects(user_id,f_id,f_time,f_content,user_name) values" +
-                "(?,?,?,?,?)";
+        String sql = "insert into collects(user_id,f_id,f_time,f_content,user_name,p_url) values" +
+                "(?,?,?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -28,6 +28,7 @@ public class CollectDaoImpl extends CommonDaoImpl<Collect>{
                     pstmt.setDate(3,collect.getfTime());
                     pstmt.setString(4,collect.getfContent());
                     pstmt.setString(5,collect.getUserName());
+                    pstmt.setString(6,collect.getUrl());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -56,12 +57,14 @@ public class CollectDaoImpl extends CommonDaoImpl<Collect>{
             public Collect processRow(ResultSet rs) {
                 Collect collect = null;
                 try {
+                    collect = new Collect();
                     collect.setCollId(rs.getInt("coll_id"));
                     collect.setfContent(rs.getString("f_content"));
                     collect.setfId(rs.getInt("f_id"));
                     collect.setfTime(rs.getDate("f_time"));
                     collect.setUserId(rs.getInt("user_id"));
                     collect.setUserName(rs.getString("user_name"));
+                    collect.setUrl(rs.getString("p_url"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

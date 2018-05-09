@@ -23,6 +23,18 @@ public class Collect implements Serializable{
      * 收藏人的id  用来遍历
      */
     private int userId;
+    /**
+     * 图片url
+     */
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public int getCollId() {
         return collId;

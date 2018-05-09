@@ -54,6 +54,26 @@ public final class DaoFactory {
             dao = new PictureDaoImpl();
             map.put(name,dao);
         }
+        if("collect".equals(name)){
+            dao = new CollectDaoImpl();
+            map.put(name,dao);
+        }
+        if("yunCircles".equals(name)){
+            dao = new YunCirclesDaoImpl();
+            map.put(name,dao);
+        }
+        if("yunComments".equals(name)){
+            dao = new YunCommentsDaoImpl();
+            map.put(name,dao);
+        }
+        if("yunLikes".equals(name)){
+            dao = new YunLikesDaoImpl();
+            map.put(name,dao);
+        }
+        if("yMix".equals(name)){
+            dao = new YunMixDaoImpl();
+            map.put(name,dao);
+        }
         return dao;
     }
 }
