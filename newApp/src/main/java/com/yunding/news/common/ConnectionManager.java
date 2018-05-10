@@ -62,7 +62,6 @@ public final class ConnectionManager {
             conn = dataSource.getConnection();
         }
         local.set(conn);
-        System.out.println("连接成功！");
         return conn;
     }
 

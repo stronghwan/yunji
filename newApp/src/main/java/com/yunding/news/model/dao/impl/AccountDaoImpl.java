@@ -38,7 +38,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                 }
             }
         });
-       final int id = this.findUserId(account.getName());
+       final int id = this.findUserIdPersonal(account.getName());
        String sql2 = "insert into personalCenter(user_id) values(?)";
         return JdbcTemplate.update(sql2, new JdbcTemplate.PreparedStatementSetter() {
             @Override
@@ -127,7 +127,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
      * @return
      */
     @Override
-    public int findUserId(final String name) {
+    public int findUserIdPersonal(final String name) {
         String sql = "select w_id from personalCenter where user_name = ?";
         return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
@@ -254,5 +254,36 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                 }
             }
         });
+    }
+
+    @Override
+    public int findUserId(final String name) {
+        String sql = "select * from account where user_name = ?";
+        return JdbcTemplate.SingleQuery(sql, new JdbcTemplate.PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement pstmt) {
+                try {
+                    pstmt.setString(1,name);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        },createHandleAccount());
+    }
+
+    private JdbcTemplate.RowCallBackHandle<Integer> createHandleAccount() {
+        return new JdbcTemplate.RowCallBackHandle<Integer>() {
+            @Override
+            public Integer processRow(ResultSet rs) {
+                Account account = null;
+                try {
+                    account = new Account();
+                    account.setId(rs.getInt("user_id"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return account.getId();
+            }
+        };
     }
 }

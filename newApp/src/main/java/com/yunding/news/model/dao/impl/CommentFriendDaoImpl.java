@@ -1,13 +1,8 @@
 package com.yunding.news.model.dao.impl;
 
-import com.yunding.news.common.JdbcTemplate;
 import com.yunding.news.model.dao.DaoFactory;
 import com.yunding.news.model.pojo.*;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +15,7 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
 
     @Override
     public List<CommentFriendCircle> findCommentFriend(String name) {
-        List<Attention> aList = DaoFactory.getDao("attention").findAttByUserId(findUserId(name));
+        List<Attention> aList = DaoFactory.getDao("attention").findAttByUserId(findUserIdPersonal(name));
         List<CommentFriendCircle> cfList = null;
         CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
         for (Attention list : aList) {
