@@ -40,7 +40,7 @@ public class FriendCircleDaoImpl extends CommonDaoImpl<FriendCircle>{
     }
 
     /**
-     * 查找朋友圈中所有的说说
+     * 查找朋友圈中所有的 说说
      * @return 所有说说的集合
      */
     @Override
