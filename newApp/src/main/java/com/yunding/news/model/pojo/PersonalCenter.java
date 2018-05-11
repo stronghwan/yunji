@@ -21,6 +21,24 @@ public class PersonalCenter implements Serializable {
     private String email;
     private String department;
     private int userId;
+    private String nickname;
+    private String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public int getUserId() {
         return userId;
@@ -85,4 +103,5 @@ public class PersonalCenter implements Serializable {
     public void setDepartment(String department) {
         this.department = department;
     }
+
 }

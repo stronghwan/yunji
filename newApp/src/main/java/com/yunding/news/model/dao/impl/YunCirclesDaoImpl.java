@@ -1,6 +1,5 @@
 package com.yunding.news.model.dao.impl;
 
-import com.sun.prism.j2d.J2DPipeline;
 import com.yunding.news.common.JdbcTemplate;
 import com.yunding.news.model.dao.DaoFactory;
 import com.yunding.news.model.pojo.YunCircles;
@@ -22,7 +21,7 @@ public class YunCirclesDaoImpl extends CommonDaoImpl<YunCircles>{
     public int save(final YunCircles yunCircles) {
         String sql = "insert into yunCircles(user_id, user_name, y_content, kindOf)" +
                 "values(?,?,?,?)";
-        final int id = DaoFactory.getDao("user").findUserId(yunCircles.getUserName());
+        final int id = DaoFactory.getDao("user").findUserIdPersonal(yunCircles.getUserName());
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
