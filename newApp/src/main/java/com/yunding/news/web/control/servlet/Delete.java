@@ -12,8 +12,7 @@ import java.sql.SQLException;
 /*
  * 单个删除
  * @Author WFH
- *
- *  */
+ */
 
 @WebServlet(name = "Delete",urlPatterns = "servlet/Delete")
 public class Delete extends HttpServlet {
