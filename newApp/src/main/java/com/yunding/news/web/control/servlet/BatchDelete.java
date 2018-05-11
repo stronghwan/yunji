@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+/*
+ * 多个删除
+ * @Author WFH
+ * */
 @WebServlet(name = "BatchDelete",urlPatterns = "/servlet/BatchDelete")
 public class BatchDelete extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         String deletes_data =request.getParameter("deletes_data");
         JSONObject jsonObject = JSONObject.fromObject(deletes_data);
         String[] user_names = (String[]) jsonObject.get("user_names");
