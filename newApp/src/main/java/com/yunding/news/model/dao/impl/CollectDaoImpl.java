@@ -1,6 +1,8 @@
 package com.yunding.news.model.dao.impl;
 
 import com.yunding.news.common.JdbcTemplate;
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.Collect;
 
 import java.sql.PreparedStatement;
@@ -17,8 +19,10 @@ import java.util.List;
 public class CollectDaoImpl extends CommonDaoImpl<Collect>{
     @Override
     public int save(final Collect collect) {
-        String sql = "insert into collects(user_id,f_id,f_time,f_content,user_name,p_url) values" +
-                "(?,?,?,?,?,?)";
+        String sql = "insert into collects(user_id,f_id,f_time,f_content,user_name,p_url,nickName) values" +
+                "(?,?,?,?,?,?,?)";
+        Account account = (Account) DaoFactory.getDao("user").findByUserName(collect.getUserName());
+        collect.setNickName(account.getNickName());
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -29,6 +33,7 @@ public class CollectDaoImpl extends CommonDaoImpl<Collect>{
                     pstmt.setString(4,collect.getfContent());
                     pstmt.setString(5,collect.getUserName());
                     pstmt.setString(6,collect.getUrl());
+                    pstmt.setString(7,collect.getNickName());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -65,6 +70,7 @@ public class CollectDaoImpl extends CommonDaoImpl<Collect>{
                     collect.setUserId(rs.getInt("user_id"));
                     collect.setUserName(rs.getString("user_name"));
                     collect.setUrl(rs.getString("p_url"));
+                    collect.setNickName(rs.getString("nickName"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -19,6 +19,7 @@ public class Collect implements Serializable{
     private int fId;
     private Date fTime;
     private String fContent;
+    private String nickName;
     /**
      * 收藏人的id  用来遍历
      */
@@ -82,5 +83,13 @@ public class Collect implements Serializable{
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }
