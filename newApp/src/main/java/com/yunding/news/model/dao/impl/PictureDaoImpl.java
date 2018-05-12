@@ -6,7 +6,6 @@ import com.yunding.news.model.pojo.Pictures;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * @TODO
@@ -25,8 +24,8 @@ public class PictureDaoImpl extends CommonDaoImpl<Pictures>{
                 try {
                     pstmt.setInt(1,pictures.getUserId());
                     pstmt.setString(2,pictures.getUrl());
-                    pstmt.setString(3,pictures.getUserName());
-                    pstmt.setInt(4,pictures.getfId());
+                    pstmt.setString(3,pictures.getPuser_name());
+                    pstmt.setInt(4,pictures.getFid());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -58,8 +57,8 @@ public class PictureDaoImpl extends CommonDaoImpl<Pictures>{
                     pictures = new Pictures();
                     pictures.setpId(rs.getInt("p_id"));
                     pictures.setpId(rs.getInt("user_name"));
-                    pictures.setUserName(rs.getString("p_url"));
-                    pictures.setUserName(rs.getString("user_name"));
+                    pictures.setPuser_name(rs.getString("p_url"));
+                    pictures.setPuser_name(rs.getString("user_name"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -48,7 +48,7 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
 //            Comment comment = (Comment) DaoFactory.getDao("comment").findByUserId(aUserId);
 //            // 将这两个对象的值放在CommentFriendCircle这个对象中。
 //            CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
-//            commentFriendCircle.setUsername(friendCircle.getUserName());
+//            commentFriendCircle.setUsername(friendCircle.getPuser_name());
 //            commentFriendCircle.setCreateTime(friendCircle.getCreateTime());
 //            commentFriendCircle.setfContent(friendCircle.getfContent());
 //            commentFriendCircle.setcContent(comment.getcContent());

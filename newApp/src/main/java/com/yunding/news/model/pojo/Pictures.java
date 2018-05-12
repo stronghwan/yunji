@@ -13,8 +13,8 @@ public class Pictures implements Serializable{
     private int pId;
     private int userId;
     private String url;
-    private String userName;
-    private int fId;            // 修改
+    private String puser_name;
+    private int fid;            // 修改
 
     public int getpId() {
         return pId;
@@ -40,19 +40,19 @@ public class Pictures implements Serializable{
         this.url = url;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getPuser_name() {
+        return puser_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPuser_name(String puser_name) {
+        this.puser_name = puser_name;
     }
 
-    public int getfId() {
-        return fId;
+    public int getFid() {
+        return fid;
     }
 
-    public void setfId(int fId) {
-        this.fId = fId;
+    public void setFid(int fid) {
+        this.fid = fid;
     }
 }
