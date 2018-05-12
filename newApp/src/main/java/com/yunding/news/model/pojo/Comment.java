@@ -16,6 +16,15 @@ public class Comment implements Serializable{
     private String cContent;
     private int fId;    // 修改
     private String userName;
+    private String nickName;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public String getUserName() {
         return userName;
