@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/*
+ * 用户权限
+ * @Author WFH
+ * */
+
 @WebServlet(name = "Permission")
 public class Permission extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         //接收String用户名与String[]权限数组
         String permission_data = request.getParameter("permission_data");
         JSONObject jsonObject = JSONObject.fromObject(permission_data);
