@@ -9,12 +9,15 @@ package com.yunding.news.web.control;
 import com.yunding.news.model.pojo.Collect;
 import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.yunding.news.model.service.ServiceFactory.getService;
-
+@WebServlet(name = "collectServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/coll"})
 public class collectServlet extends HttpServlet {
 
 
@@ -32,13 +35,24 @@ public class collectServlet extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException {
-      //解析JSON数据
-        String json="";
-        JSONArray jsonArray=JSONArray.fromObject(json);
-        Collect collect=null;
-        for (int i=0;i<jsonArray.size();i++) {
-            collect=new Collect();
-            String fCreatetime = jsonArray.getJSONObject(i).getString("fcreate_time");
+        //请求中文编码设置
+        request.setCharacterEncoding("UTF-8");
+
+        // 响应中文乱码  字节流处理
+        response.setHeader("ContentType", "text/html;application/json;charset=UTF-8");
+
+        //响应中文乱码  字符流处理；设置response缓冲区编码
+        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html");
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        //解析JSON数据
+        String JSON=request.getParameter("collectList");
+        JSONObject json=JSONObject.fromObject(JSON);
+        Collect collect=new Collect();
+            String fCreatetime = json.getString("fcreate_time");
             java.sql.Date fdate = null;  //格式
             DateFormat sdf = new SimpleDateFormat();
             try {
@@ -47,49 +61,25 @@ public class collectServlet extends HttpServlet {
                 e.printStackTrace();
             }
             collect.setfTime(fdate);
-            collect.setfContent(jsonArray.getJSONObject(i).getString("fcontent"));
-            collect.setfId(jsonArray.getJSONObject(i).getInt("fid"));
-            collect.setUserName(jsonArray.getJSONObject(i).getString("fuser_name"));//说说name
+            collect.setfContent(json.getString("fcontent"));
+            collect.setfId(json.getInt("fid"));
+            collect.setUserName(json.getString("fuser_name"));//说说name
 
-            String cUsername=jsonArray.getJSONObject(i).getString("cuser_name");
+            String cUsername=json.getString("cuser_name");
             int cuserid= getService( "user" ).findUserId( cUsername);//收藏人的id
             collect.setUserId(cuserid);
-            collect.setUrl(jsonArray.getJSONObject(i).getString("furl"));
+            collect.setUrl(json.getString("furl"));
             ServiceFactory.getService("collect").save(collect);
-        }
 
 
+            JSONObject jsonObject=new JSONObject();
+            jsonObject.put("code",200);
+            jsonObject.put("message","success");
+            PrintWriter printWriter=response.getWriter();
+            printWriter.write(jsonObject.toString());
+            printWriter.flush();
+            printWriter.close();
 
-
-
-        for (int i=0;i<jsonArray.size();i++){
-            String cUsername=jsonArray.getJSONObject(i).getString("cUsername");
-        int cUser_id= getService( "user" ).findUserId(cUsername  );
-        List<Collect> collects= getService("collect").findByUserId(cUser_id);
-        collect_ collect_=null;
-        List<collect_> collect_s=new ArrayList<>();
-        for (Collect collect1:collects){
-            collect_=new collect_();
-            collect_.setfId(collect1.getfId());  //
-            collect_.setCollId(collect1.getCollId());
-            collect_.setfContent(collect1.getfContent());
-            collect_.setUserName(collect1.getUserName());
-            Date ftime=collect1.getfTime();
-            DateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH:mm");
-            String fTime=sdf.format(ftime);
-            collect_.setfTime(fTime);
-            collect_.setUrl(collect1.getUrl());
-            collect_s.add(collect_);
-        }
-
-       //给说说进行排序
-        sortClass_C sortClass_c=new sortClass_C();
-        Collections.sort(collect_s,sortClass_c);
-
-
-
-
-        jsonArray=JSONArray.fromObject(collect_s);
 
 
         }
@@ -97,8 +87,17 @@ public class collectServlet extends HttpServlet {
 
 
 
-    }
-}
+
+
+
+
+        }
+
+
+
+
+
+
 
 
 

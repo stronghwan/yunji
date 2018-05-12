@@ -10,105 +10,103 @@ import java.util.*;
 
 public class commentfriendCircle_ {
     // 说说的内容
-   private int fId;
-   private String fcreateTime;
-   private String fContent;
-   private String username;
+   private int fid;
+   private String fcreate_time;
+   private String fcontent;
+   private String user_name;
     // 评论的内容
     List<commentfriendCircle_> comments;
-   private int cId;
-   private int cUserId;  // 发说说人的id
-    private String cUsername;
-   private String c_time;
-   private String cContent;
-    // 点赞的内容
+   private int cid;
+   private int cuserId;  // 发说说人的id
+    private String cuser_name;
+   private String ccreate_time;
+   private String ccontent;
+
+   // 点赞的内容
     private int status;
-
+    private List<String> luser_name;
+    private  String userselfname;
     // 图片的内容
-    private String pUrl;
+    private String purl;
 
-
-    public List<String> getLikeusernames() {
-        return likeusernames;
+    public int getFid() {
+        return fid;
     }
 
-    public void setLikeusernames(List<String> likeusernames) {
-        this.likeusernames = likeusernames;
+    public void setFid(int fid) {
+        this.fid = fid;
     }
 
-    private List<String> likeusernames;
-
-
-    public String getcUsername() {
-        return cUsername;
+    public String getFcreate_time() {
+        return fcreate_time;
     }
 
-    public void setcUsername(String cUsername) {
-        this.cUsername = cUsername;
+    public void setFcreate_time(String fcreate_time) {
+        this.fcreate_time = fcreate_time;
     }
 
-    public int getfId() {
-        return fId;
+    public String getFcontent() {
+        return fcontent;
     }
 
-    public void setfId(int fId) {
-        this.fId = fId;
-    }
-
-    public String getFcreateTime() {
-        return fcreateTime;
-    }
-
-    public void setFcreateTime(String fcreateTime) {
-        this.fcreateTime = fcreateTime;
-    }
-
-    public String getfContent() {
-        return fContent;
-    }
-
-    public void setfContent(String fContent) {
-        this.fContent = fContent;
+    public void setFcontent(String fcontent) {
+        this.fcontent = fcontent;
     }
 
     public String getUsername() {
-        return username;
+        return user_name;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.user_name = username;
     }
 
-    public int getcId() {
-        return cId;
+    public List<commentfriendCircle_> getComments() {
+        return comments;
     }
 
-    public void setcId(int cId) {
-        this.cId = cId;
+    public void setComments(List<commentfriendCircle_> comments) {
+        this.comments = comments;
     }
 
-    public int getcUserId() {
-        return cUserId;
+    public int getCid() {
+        return cid;
     }
 
-    public void setcUserId(int cUserId) {
-        this.cUserId = cUserId;
+    public void setCid(int cid) {
+        this.cid = cid;
     }
 
-    public String getC_time() {
-        return c_time;
+    public int getCuserId() {
+        return cuserId;
     }
 
-    public void setC_time(String c_time) {
-        this.c_time = c_time;
+    public void setCuserId(int cuserId) {
+        this.cuserId = cuserId;
     }
 
-    public String getcContent() {
-        return cContent;
+    public String getCuser_name() {
+        return cuser_name;
     }
 
-    public void setcContent(String cContent) {
-        this.cContent = cContent;
+    public void setCuser_name(String cuser_name) {
+        this.cuser_name = cuser_name;
+    }
+
+    public String getCcreate_time() {
+        return ccreate_time;
+    }
+
+    public void setCcreate_time(String ccreate_time) {
+        this.ccreate_time = ccreate_time;
+    }
+
+    public String getCcontent() {
+        return ccontent;
+    }
+
+    public void setCcontent(String ccontent) {
+        this.ccontent = ccontent;
     }
 
     public int getStatus() {
@@ -119,22 +117,27 @@ public class commentfriendCircle_ {
         this.status = status;
     }
 
-    public String getpUrl() {
-        return pUrl;
+    public List<String> getLuser_name() {
+        return luser_name;
     }
 
-    public void setpUrl(String pUrl) {
-        this.pUrl = pUrl;
+    public void setLuser_name(List<String> luser_name) {
+        this.luser_name = luser_name;
     }
 
-    public List<commentfriendCircle_> getComments() {
-        return comments;
+    public String getUserselfname() {
+        return userselfname;
     }
 
-    public void setComments(List<commentfriendCircle_> comments) {
-        this.comments = comments;
-        }
+    public void setUserselfname(String userselfname) {
+        this.userselfname = userselfname;
+    }
 
+    public String getPurl() {
+        return purl;
+    }
 
-
+    public void setPurl(String purl) {
+        this.purl = purl;
+    }
 }

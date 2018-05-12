@@ -14,7 +14,7 @@ public class sortClass_C implements Comparator {
     public int compare(Object o1, Object o2) {
         collect_ collect_1= (collect_) o1;
         collect_ collect_2= (collect_) o2;
-        int flag=-(((collect_) o1).getfTime().compareTo(((collect_) o2).getfTime()));
+        int flag=-(((collect_) o1).getFcreat_time().compareTo(((collect_) o2).getFcreat_time()));
         return flag;
     }
 

@@ -13,7 +13,7 @@ public class sortClass_f implements Comparator {
     public int compare(Object o1, Object o2) {
         commentfriendCircle_ commentfriendCircle_1= (commentfriendCircle_) o1;
         commentfriendCircle_ commentfriendCircle_2= (commentfriendCircle_) o2;
-        int flag=-(((commentfriendCircle_) o1).getFcreateTime().compareTo(((commentfriendCircle_) o2).getFcreateTime()));
+        int flag=-(((commentfriendCircle_) o1).getFcreate_time().compareTo(((commentfriendCircle_) o2).getFcreate_time()));
         return flag;
     }
 }

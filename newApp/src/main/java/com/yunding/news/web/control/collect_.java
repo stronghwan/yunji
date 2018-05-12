@@ -13,24 +13,19 @@ public class collect_ {
     /**
      * 被收藏说说的名字  用来显示
      */
-    private String userName;
-    private int fId;
-    private String fTime;
-    private String fContent;
+    private String fuser_name;
+    private int fid;
+    private String fcreat_time;
+    private String fcontent;
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 
     /**
      * 图片url
-
      */
-    private String url;
+    private String furl;
+
+    private String cuser_name;
+
     public int getCollId() {
         return collId;
     }
@@ -39,35 +34,51 @@ public class collect_ {
         this.collId = collId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getFuser_name() {
+        return fuser_name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setFuser_name(String fuser_name) {
+        this.fuser_name = fuser_name;
     }
 
-    public int getfId() {
-        return fId;
+    public int getFid() {
+        return fid;
     }
 
-    public void setfId(int fId) {
-        this.fId = fId;
+    public void setFid(int fid) {
+        this.fid = fid;
     }
 
-    public String getfTime() {
-        return fTime;
+    public String getFcreat_time() {
+        return fcreat_time;
     }
 
-    public void setfTime(String fTime) {
-        this.fTime = fTime;
+    public void setFcreat_time(String fcreat_time) {
+        this.fcreat_time = fcreat_time;
     }
 
-    public String getfContent() {
-        return fContent;
+    public String getFcontent() {
+        return fcontent;
     }
 
-    public void setfContent(String fContent) {
-        this.fContent = fContent;
+    public void setFcontent(String fcontent) {
+        this.fcontent = fcontent;
+    }
+
+    public String getFurl() {
+        return furl;
+    }
+
+    public void setFurl(String furl) {
+        this.furl = furl;
+    }
+
+    public String getCuser_name() {
+        return cuser_name;
+    }
+
+    public void setCuser_name(String cuser_name) {
+        this.cuser_name = cuser_name;
     }
 }

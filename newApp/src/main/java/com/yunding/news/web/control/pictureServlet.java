@@ -7,6 +7,7 @@ package com.yunding.news.web.control;
  */import com.yunding.news.model.pojo.Pictures;
 import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -110,17 +111,30 @@ public class pictureServlet extends HttpServlet {
         pictures.setUrl( url );
 
 
-        String json="";
-        JSONArray jsonArray=JSONArray.fromObject( json );
-        for(int i=0;i<jsonArray.size();i++){
-            String puser_name=jsonArray.getJSONObject( i ).getString( "puser_name" ) ;
+        //请求中文编码设置
+        request.setCharacterEncoding("UTF-8");
+
+        // 响应中文乱码  字节流处理
+        response.setHeader("ContentType", "text/html;application/json;charset=UTF-8");
+
+        //响应中文乱码  字符流处理；设置response缓冲区编码
+        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html");
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+
+        String JSON=request.getParameter("pictureList"); //json
+        JSONObject json=JSONObject.fromObject(JSON);
+
+            String puser_name=json.getString( "puser_name" ) ;
             int puser_id = ServiceFactory.getService("user").findUserId(puser_name);
             //将传入的user_name转为user_id,存入数据库
-            pictures.setUserName( puser_name );
+            pictures.setPuser_name( puser_name );
             pictures.setUserId( puser_id );
-            pictures.setfId(jsonArray.getJSONObject(i).getInt("fid"));
+            pictures.setFid(json.getInt("fid"));
             ServiceFactory.getService("picture").save(pictures);
         }
     }
 
-}
+

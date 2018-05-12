@@ -9,16 +9,16 @@ import java.sql.Date;
 import java.util.List;
 
 public class yunMix_ {
-    private int yId;
-    private String userName;
-    private String yContent;
+    private int yid;
+    private String username;
+    private String y_content;
     private String kindof;
     private String y_time;
     //评论
 
-    private int cId;
-    private String cContent;
-    private String cuserName;
+    private int cid;
+    private String c_content;
+    private String c_username;
     List<yunMix_> comments;
 
     //点赞
@@ -33,29 +33,6 @@ public class yunMix_ {
         this.comments = comments;
     }
 
-    public int getyId() {
-        return yId;
-    }
-
-    public void setyId(int yId) {
-        this.yId = yId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getyContent() {
-        return yContent;
-    }
-
-    public void setyContent(String yContent) {
-        this.yContent = yContent;
-    }
 
     public String getKindof() {
         return kindof;
@@ -73,32 +50,6 @@ public class yunMix_ {
         this.y_time = y_time;
     }
 
-    public int getcId() {
-        return cId;
-    }
-
-    public void setcId(int cId) {
-        this.cId = cId;
-    }
-
-
-
-
-    public String getcContent() {
-        return cContent;
-    }
-
-    public void setcContent(String cContent) {
-        this.cContent = cContent;
-    }
-
-    public String getCuserName() {
-        return cuserName;
-    }
-
-    public void setCuserName(String cuserName) {
-        this.cuserName = cuserName;
-    }
 
     public int getStatus() {
         return status;
@@ -114,5 +65,53 @@ public class yunMix_ {
 
     public void setTotalNumber(int totalNumber) {
         this.totalNumber = totalNumber;
+    }
+
+    public int getYid() {
+        return yid;
+    }
+
+    public void setYid(int yid) {
+        this.yid = yid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getY_content() {
+        return y_content;
+    }
+
+    public void setY_content(String y_content) {
+        this.y_content = y_content;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public String getC_content() {
+        return c_content;
+    }
+
+    public void setC_content(String c_content) {
+        this.c_content = c_content;
+    }
+
+    public String getC_username() {
+        return c_username;
+    }
+
+    public void setC_username(String c_username) {
+        this.c_username = c_username;
     }
 }

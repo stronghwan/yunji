@@ -12,7 +12,7 @@ public class sortClass_Cm implements Comparator {
     public int compare(Object o1, Object o2) {
         commentfriendCircle_ commentfriendCircle_1= (commentfriendCircle_) o1;
         commentfriendCircle_ commentfriendCircle_2= (commentfriendCircle_) o2;
-        int flag=-(((commentfriendCircle_) o1).getC_time().compareTo(((commentfriendCircle_) o2).getC_time()));
+        int flag=-(((commentfriendCircle_) o1).getCcreate_time().compareTo(((commentfriendCircle_) o2).getCcreate_time()));
         return flag;
     }
 }
