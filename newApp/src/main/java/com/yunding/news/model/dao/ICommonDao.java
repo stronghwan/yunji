@@ -36,6 +36,7 @@ public interface ICommonDao<T extends Serializable> {
      * @param name 用户名
      * @return id
      */
+    int findUserIdPersonal(String name);
     int findUserId(String name);
 
     /**

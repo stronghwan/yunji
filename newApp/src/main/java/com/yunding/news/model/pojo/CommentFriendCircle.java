@@ -23,6 +23,7 @@ public class CommentFriendCircle implements Serializable{
     int cUserId; // 发说说人的id
     Date c_time;
     String cContent;
+    String nikeName;
 
     // 点赞的内容
     private int status;
@@ -145,4 +146,11 @@ public class CommentFriendCircle implements Serializable{
         this.commentList = commentList;
     }
 
+    public String getNikeName() {
+        return nikeName;
+    }
+
+    public void setNikeName(String nikeName) {
+        this.nikeName = nikeName;
+    }
 }

@@ -1,7 +1,6 @@
 package com.yunding.news.model.service.impl;
 
 import com.yunding.news.model.dao.DaoFactory;
-import com.yunding.news.model.dao.impl.CommonDaoImpl;
 import com.yunding.news.model.pojo.Account;
 
 import java.util.List;

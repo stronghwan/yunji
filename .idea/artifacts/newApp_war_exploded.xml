@@ -7,11 +7,9 @@
           <element id="module-output" name="newApp" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="newsApp-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="newApp" />
-          </element>
+          <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
-          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
+          <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.15" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
@@ -25,6 +23,8 @@
           <element id="library" level="project" name="Maven: org.apiguardian:apiguardian-api:1.0.0" />
           <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.1.0" />
           <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.2.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.0.2" />
+          <element id="library" level="project" name="Maven: javax.mail:javax.mail-api:1.6.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -22,7 +22,7 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     }
 
     @Override
-    public int findUserId(String name) {
+    public int findUserIdPersonal(String name) {
         return 0;
     }
 
@@ -104,5 +104,10 @@ public abstract class CommonDaoImpl<T extends Serializable> implements ICommonDa
     @Override
     public List<T> findCommon(String common) {
         return null;
+    }
+
+    @Override
+    public int findUserId(String name) {
+        return 0;
     }
 }
