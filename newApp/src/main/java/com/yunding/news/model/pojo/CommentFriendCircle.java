@@ -33,6 +33,24 @@ public class CommentFriendCircle implements Serializable{
     List<FriendCircle>  friendCircleList = new ArrayList<FriendCircle>();
     List<Comment> commentList = new ArrayList<Comment>();
     List<String> likesUserName = new ArrayList<String>();
+    List<Likes> likes = new ArrayList<Likes>();
+    List<Pictures> pictures = new ArrayList<Pictures>();
+
+    public List<Likes> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Likes> likes) {
+        this.likes = likes;
+    }
+
+    public List<Pictures> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Pictures> pictures) {
+        this.pictures = pictures;
+    }
 
     public List<String> getLikesUserName() {
         return likesUserName;

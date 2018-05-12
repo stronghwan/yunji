@@ -9,7 +9,8 @@ import java.util.Date;
  * @Verison
  * @Date2018/4/20-13-34
  */
-public class FriendCircle implements Serializable{
+public class
+FriendCircle implements Serializable{
     int fId;
     int fUserId;
     Date createTime;

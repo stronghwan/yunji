@@ -16,6 +16,15 @@ public class Likes implements Serializable{
     private String userSelfName;
     private String  userByName;
     private int fId;             // 修改
+    private String nickName;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public int getlId() {
         return lId;

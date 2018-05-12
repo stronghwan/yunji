@@ -19,8 +19,8 @@ import java.util.List;
 public class LikeDaoImpl extends CommonDaoImpl<Likes>{
     @Override
     public int save(final Likes likes) {
-        String sql = "insert into likes(user_id,l_status,userself_name,userby_name,f_id) values" +
-                "(?,?,?,?,?)";
+        String sql = "insert into likes(user_id,l_status,userself_name,userby_name,f_id,nickName) values" +
+                "(?,?,?,?,?,?)";
         return JdbcTemplate.update(sql, new JdbcTemplate.PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement pstmt) {
@@ -30,6 +30,7 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
                     pstmt.setString(3,likes.getUserSelfName());
                     pstmt.setString(4,likes.getUserByName());
                     pstmt.setInt(5,likes.getfId());
+                    pstmt.setString(6,likes.getNickName());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -64,6 +65,7 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
                     likes.setUserId(rs.getInt("user_id"));
                     likes.setUserSelfName(rs.getString("userself_name"));
                     likes.setUserByName(rs.getString("userby_name"));
+                    likes.setNickName(rs.getString("nickName"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
