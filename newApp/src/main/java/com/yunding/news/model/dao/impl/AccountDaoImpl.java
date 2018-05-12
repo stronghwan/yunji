@@ -68,6 +68,7 @@ public class AccountDaoImpl extends CommonDaoImpl<Account>{
                     account.setAnswer(rs.getString("answer"));
                     account.setStatus(rs.getString("status"));
                     account.setDepartment(rs.getString("department"));
+                    account.setNickName(rs.getString("user_nickName"));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

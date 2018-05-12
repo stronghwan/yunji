@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/*
+ * 用户信息
+ * @Author WFH
+ * */
+
 @WebServlet(name = "Query",urlPatterns = "servlet/Query")
 public class Query extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         //将用户的list数据包装成JSON数据
         JavaBean javaBean =new JavaBean();
         List list = javaBean.query();
