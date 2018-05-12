@@ -11,11 +11,20 @@ import java.util.Date;
  */
 public class Comment implements Serializable{
     private int cId;
-    private int cUserId; // 评论人的id
+    private int cUserId; // 发说说人的id
     private Date c_time;
     private String cContent;
     private int fId;    // 修改
-    private String userName; //评论人的名字
+    private String userName;
+    private String nickName;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public String getUserName() {
         return userName;

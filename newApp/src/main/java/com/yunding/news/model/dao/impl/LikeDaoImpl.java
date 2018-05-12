@@ -1,6 +1,8 @@
 package com.yunding.news.model.dao.impl;
 
 import com.yunding.news.common.JdbcTemplate;
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.Likes;
 
 import java.sql.PreparedStatement;
@@ -91,7 +93,8 @@ public class LikeDaoImpl extends CommonDaoImpl<Likes>{
             public String processRow(ResultSet rs) {
                 String name = null;
                 try {
-                    name = rs.getString("user_name");
+                    Account account = (Account) DaoFactory.getDao("user").findByUserName(rs.getString("user_name"));
+                    name = account.getNickName();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

@@ -25,6 +25,8 @@ public class YunMixDaoImpl extends CommonDaoImpl<YunMix>{
             lYComments = DaoFactory.getDao("yunComments").findByUserId(yunCircles.getyId());
             yunMix.setlYComments(lYComments);
             YunLikes yunLikes = (YunLikes) DaoFactory.getDao("yunLikes").findByUserIdSingle(yunCircles.getyId());
+            Account account = (Account) DaoFactory.getDao("user").findByUserName(yunCircles.getUserName());
+            yunMix.setNickName(account.getNickName());
             yunMix.setlStatus(yunLikes.getStatus());
             yunMix.setTotalNumber(yunLikes.getTotalNumber());
             lYMix.add(yunMix);
