@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "Servlet", urlPatterns = "src/main/java/com/yunding/news/web/control/SensitiveServlet")
+@WebServlet(name = "Servlet", urlPatterns = {"/main/java/com/yunding/news/web/control/SensitiveServlet"})
 public class SensitiveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
