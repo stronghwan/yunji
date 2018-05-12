@@ -15,7 +15,7 @@ public class YunMix implements Serializable{
     private List<YunComments> lYComments = new ArrayList<YunComments>();
     private int lStatus;
     private int totalNumber;
-
+    private String nickName;
     public List<YunCircles> getlYCircles() {
         return lYCircles;
     }
@@ -46,5 +46,13 @@ public class YunMix implements Serializable{
 
     public void setTotalNumber(int totalNumber) {
         this.totalNumber = totalNumber;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }

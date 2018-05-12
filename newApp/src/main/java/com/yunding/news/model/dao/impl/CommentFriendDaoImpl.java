@@ -20,6 +20,7 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
         CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
         for (Attention list : aList) {
             final int aUserId = list.getAuserId();
+            String aUserName = list.getAuserName();
             List<FriendCircle> fList = DaoFactory.getDao("fc").findByUserId(aUserId);
             List<Comment> cList = null;
             List<String> lList = null;
@@ -30,6 +31,8 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
                 lList = DaoFactory.getDao("like").findUserNameByFId(flist.getfId());
                 Pictures pictures = (Pictures) DaoFactory.getDao("picture").findByUserIdSingle(flist.getfId());
                 Likes likes = (Likes) DaoFactory.getDao("like").findByUserIdSingle(flist.getfId());
+                Account account = (Account) DaoFactory.getDao("user").findByUserName(aUserName);
+                commentFriendCircle.setNikeName(account.getNickName());
                 commentFriendCircle.setStatus(likes.getStatus());
                 commentFriendCircle.setpUrl(pictures.getUrl());
                 commentFriendCircle.setCommentList(cList);
@@ -45,7 +48,7 @@ public class CommentFriendDaoImpl extends CommonDaoImpl<CommentFriendCircle> {
 //            Comment comment = (Comment) DaoFactory.getDao("comment").findByUserId(aUserId);
 //            // 将这两个对象的值放在CommentFriendCircle这个对象中。
 //            CommentFriendCircle commentFriendCircle = new CommentFriendCircle();
-//            commentFriendCircle.setUsername(friendCircle.getUserName());
+//            commentFriendCircle.setUsername(friendCircle.getPuser_name());
 //            commentFriendCircle.setCreateTime(friendCircle.getCreateTime());
 //            commentFriendCircle.setfContent(friendCircle.getfContent());
 //            commentFriendCircle.setcContent(comment.getcContent());
