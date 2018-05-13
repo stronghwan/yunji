@@ -1,5 +1,7 @@
 package com.yunding.news.web.others.LZQ;
 
+//import sun.plugin2.message.Message;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
