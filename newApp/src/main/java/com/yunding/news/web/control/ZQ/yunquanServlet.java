@@ -82,7 +82,9 @@ public class yunquanServlet extends HttpServlet {
           if (status==0){
               yunLikes.setStatus(1);
               yunLikes.setyId(json.getInt("yid"));
-              yunLikes.setTotalNumber(json.getInt("totalNumber"));
+              int totalNumber=json.getInt("totalNumber");
+              totalNumber=totalNumber+1;
+              yunLikes.setTotalNumber(totalNumber);
             ServiceFactory.getService("yunLikes").save(yunLikes);
             ServiceFactory.getService("yunLikes").modifiedUserInfo(yunLikes);
           }
