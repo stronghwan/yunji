@@ -1,4 +1,4 @@
-package com.yunding.news.web.control;
+package com.yunding.news.web.control.ZQ;
 /*
  * @Name: 云圈
  * @Author:Farmerzhang
@@ -8,12 +8,11 @@ package com.yunding.news.web.control;
 import com.yunding.news.model.pojo.YunCircles;
 import com.yunding.news.model.pojo.YunComments;
 import com.yunding.news.model.pojo.YunLikes;
-import com.yunding.news.model.pojo.YunMix;
 import com.yunding.news.model.service.ServiceFactory;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +20,8 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
+@WebServlet(name = "yunquanServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/yunquanServlet"})
 
 public class yunquanServlet extends HttpServlet {
 
@@ -90,6 +87,8 @@ public class yunquanServlet extends HttpServlet {
             ServiceFactory.getService("yunLikes").modifiedUserInfo(yunLikes);
           }
           }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
 
 }

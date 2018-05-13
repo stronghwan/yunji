@@ -1,13 +1,16 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.web.control.ZQ;    /*
  * @Name:
  * @Author:Farmerzhang
  * @Date: 2018/5/12
  * @Time: 11:15
  */
 
-import com.yunding.news.model.pojo.Comment;
-import com.yunding.news.model.pojo.CommentFriendCircle;
-import com.yunding.news.model.pojo.FriendCircle;
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.*;
+import com.yunding.news.model.pojo.ZQ.commentfriendCircle_;
+import com.yunding.news.model.pojo.ZQ.sortClass_Cm;
+import com.yunding.news.model.pojo.ZQ.sortClass_f;
+import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -26,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.yunding.news.model.service.ServiceFactory.getService;
-@WebServlet(name = "fcShowServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/fcShowServlet"})
+@WebServlet(name = "fcShowServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/fcShowServlet"})
 public class fcShowServlet extends HttpServlet {
     public fcShowServlet() {
     }
@@ -70,10 +73,11 @@ public class fcShowServlet extends HttpServlet {
                 String F_time = sdf1.format(cfc2);
                 commentfriendCircle_.setFcreate_time(F_time);
                 commentfriendCircle_.setFid(friendCircle.getfId());
-                commentfriendCircle_.setUsername(friendCircle.getUserName());
+                commentfriendCircle_.setUser_name(friendCircle.getUserName());
                 commentfriendCircle_.setFcontent(friendCircle.getfContent());
-
-                List<Comment> comments = commentFriendCircle.getCommentList();
+                Account account1= (Account) DaoFactory.getDao("user").findByUserName(friendCircle.getUserName());
+                commentfriendCircle_.setNike_name(account1.getNickName());
+                List<Comment> comments = ServiceFactory.getService("comment").findByUserId(friendCircle.getfId());
                 List<commentfriendCircle_> commentList = commentfriendCircle_.getComments();
                 for (Comment comment1 : comments) {
                     commentfriendCircle_1 = new commentfriendCircle_();
@@ -84,14 +88,25 @@ public class fcShowServlet extends HttpServlet {
                     commentfriendCircle_1.setCid(comment1.getcId());
                     commentfriendCircle_1.setCcontent(comment1.getcContent());
                     commentfriendCircle_1.setCuser_name(comment1.getUserName());//评论人的name
+                    Account account2= (Account) DaoFactory.getDao("user").findByUserName(comment1.getUserName());
+                    commentfriendCircle_.setNike_name(account2.getNickName());
                     commentList.add(commentfriendCircle_1);
                 }
+
                 sortClass_Cm sortClass_cm = new sortClass_Cm();
                 Collections.sort(commentList, sortClass_cm);
                 commentfriendCircle_.setPurl(commentFriendCircle.getpUrl());
-                commentfriendCircle_.setStatus(commentFriendCircle.getStatus());
-                commentfriendCircle_.setLuser_name(commentFriendCircle.getLikesUserName());
-                commentfriendCircle_s.add(commentfriendCircle_);
+                Likes likes= (Likes) ServiceFactory.getService("like").findByUserIdSingle(friendCircle.getfId());
+                commentfriendCircle_.setStatus(likes.getStatus());
+                List<String> likenames=ServiceFactory.getService("like").findUserNameByFId(friendCircle.getfId());
+                List<String>  likeLists=new ArrayList<>();
+                for (String likename:likenames){
+                    Account account3= (Account) DaoFactory.getDao("user").findByUserName(friendCircle.getUserName());
+                    likeLists.add(account3.getNickName());
+                    }
+
+                    commentfriendCircle_.setLuser_name(likeLists);
+                    commentfriendCircle_s.add(commentfriendCircle_);
 
             }
 
@@ -100,12 +115,15 @@ public class fcShowServlet extends HttpServlet {
         //给说说进行排序
         sortClass_f sortClass_f = new sortClass_f();
         Collections.sort(commentfriendCircle_s, sortClass_f);
-        JSONArray fcShowList = JSONArray.fromObject(commentfriendCircle_s);
+        JSONArray CirecleFir = JSONArray.fromObject(commentfriendCircle_s);
         PrintWriter printWriter=response.getWriter();
-        printWriter.write(fcShowList.toString());
+        printWriter.write(CirecleFir.toString());
         printWriter.flush();
         printWriter.close();
 
+
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

@@ -1,11 +1,15 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.web.control.ZQ;    /*
  * @Name:
  * @Author:Farmerzhang
  * @Date: 2018/5/12
  * @Time: 12:08
  */
 
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.FriendCircle;
+import com.yunding.news.model.pojo.ZQ.commentfriendCircle_;
+import com.yunding.news.model.pojo.ZQ.sortClass_f;
 import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -20,7 +24,7 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-@WebServlet(name = "selfCircleServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/selfCircleServlet"})
+@WebServlet(name = "selfCircleServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/selfCircleServlet"})
 public class selfCircleServlet extends HttpServlet {
     public selfCircleServlet() {
     }
@@ -52,7 +56,9 @@ public class selfCircleServlet extends HttpServlet {
             DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd-HH:mm");
             String fcreate_time=dateFormat.format(ftime);
             selfCircle.setFcreate_time(fcreate_time);
-            selfCircle.setUsername(friendCircle.getUserName());
+            selfCircle.setUser_name(friendCircle.getUserName());
+            Account account1= (Account) DaoFactory.getDao("user").findByUserName(friendCircle.getUserName());
+            selfCircle.setNike_name(account1.getNickName());
             selfCircles.add(selfCircle);
             }
 
@@ -66,6 +72,9 @@ public class selfCircleServlet extends HttpServlet {
         printWriter.close();
 
 
+
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

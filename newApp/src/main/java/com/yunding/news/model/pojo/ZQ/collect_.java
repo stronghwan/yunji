@@ -1,12 +1,10 @@
-package com.yunding.news.web.control;
+package com.yunding.news.model.pojo.ZQ;
 /*
  * @Name:朋友圈•收藏（实体类）
  * @Author:Farmerzhang
  * @Date: 2018/5/3
  * @Time: 14:31
  */
-
-import java.sql.Date;
 
 public class collect_ {
     private int collId;
@@ -17,7 +15,7 @@ public class collect_ {
     private int fid;
     private String fcreat_time;
     private String fcontent;
-
+    private String fnike_name;
 
     /**
      * 图片url
@@ -80,5 +78,13 @@ public class collect_ {
 
     public void setCuser_name(String cuser_name) {
         this.cuser_name = cuser_name;
+    }
+
+    public String getFnike_name() {
+        return fnike_name;
+    }
+
+    public void setFnike_name(String fnike_name) {
+        this.fnike_name = fnike_name;
     }
 }

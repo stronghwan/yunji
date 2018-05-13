@@ -1,4 +1,4 @@
-package com.yunding.news.web.control;
+package com.yunding.news.web.control.ZQ;
 /*
  * @Name:朋友圈•收藏
  * @Author:Farmerzhang
@@ -8,7 +8,6 @@ package com.yunding.news.web.control;
 
 import com.yunding.news.model.pojo.Collect;
 import com.yunding.news.model.service.ServiceFactory;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
@@ -21,13 +20,9 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 
 import static com.yunding.news.model.service.ServiceFactory.getService;
-@WebServlet(name = "collectServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/coll"})
+@WebServlet(name = "collectServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/collectServlet"})
 public class collectServlet extends HttpServlet {
 
 
@@ -64,7 +59,6 @@ public class collectServlet extends HttpServlet {
             collect.setfContent(json.getString("fcontent"));
             collect.setfId(json.getInt("fid"));
             collect.setUserName(json.getString("fuser_name"));//说说name
-
             String cUsername=json.getString("cuser_name");
             int cuserid= getService( "user" ).findUserId( cUsername);//收藏人的id
             collect.setUserId(cuserid);
@@ -86,7 +80,9 @@ public class collectServlet extends HttpServlet {
 
 
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
 
 
 

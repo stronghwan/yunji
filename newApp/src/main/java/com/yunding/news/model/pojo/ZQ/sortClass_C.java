@@ -1,10 +1,13 @@
-package com.yunding.news.web.control;
+package com.yunding.news.model.pojo.ZQ;
 /*
  * @Name: 朋友圈•收藏（时间排序）
  * @Author:Farmerzhang
  * @Date: 2018/5/3
  * @Time: 14:54
  */
+
+import com.yunding.news.model.pojo.ZQ.collect_;
+
 import java.util.Comparator;
 
 public class sortClass_C implements Comparator {

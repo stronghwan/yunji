@@ -1,4 +1,4 @@
-package com.yunding.news.web.control;
+package com.yunding.news.web.control.ZQ;
 /*
  * @Name:朋友圈
  * @Author:Farmerzhang
@@ -6,28 +6,27 @@ package com.yunding.news.web.control;
  * @Time: 13:31
  */
 import com.yunding.news.model.pojo.Comment;
-import com.yunding.news.model.pojo.CommentFriendCircle;
 import com.yunding.news.model.pojo.FriendCircle;
 import com.yunding.news.model.pojo.Likes;
 import com.yunding.news.model.service.ServiceFactory;
-import net.sf.json.JSONArray;
+import com.yunding.news.web.others.javaBean.JavaBean;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 import static com.yunding.news.model.service.ServiceFactory.getService;
+@WebServlet(name = "friendcircleServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/friendcircleServlet"})
 
 public class friendcircleServlet extends HttpServlet {
 
@@ -84,8 +83,11 @@ public class friendcircleServlet extends HttpServlet {
             comment=new Comment();
             String cuser_name = json.getString("cuser_name");
             int cuser_id = getService("user").findUserId(cuser_name);
-            if (1 == 1)   //方法判断是否能过够进行评论
-            {
+            JavaBean javaBean = new JavaBean();
+            try {
+                String[] getPer = javaBean.getPer(cuser_id);
+                if (getPer[1].equals(1))   //方法判断是否能过够进行评论
+                {
                 comment.setcUserId(cuser_id);  //评论人的id
                 comment.setUserName(cuser_name);  //评论人的name
                 String ccreatetime = json.getString("ccreate_time");
@@ -111,6 +113,8 @@ public class friendcircleServlet extends HttpServlet {
 
 
 
+            }} catch (SQLException e) {
+                e.printStackTrace();
             }
 
             //解析点赞的json数据
@@ -133,7 +137,9 @@ public class friendcircleServlet extends HttpServlet {
 
         }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
 
 
     }

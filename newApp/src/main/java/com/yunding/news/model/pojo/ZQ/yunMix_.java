@@ -1,11 +1,10 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.model.pojo.ZQ;    /*
  * @Name:云圈（实体类）
  * @Author:Farmerzhang
  * @Date: 2018/5/5
  * @Time: 15:40
  */
 
-import java.sql.Date;
 import java.util.List;
 
 public class yunMix_ {
@@ -14,6 +13,7 @@ public class yunMix_ {
     private String y_content;
     private String kindof;
     private String y_time;
+    private String y_nikename;
     //评论
 
     private int cid;
@@ -113,5 +113,13 @@ public class yunMix_ {
 
     public void setC_username(String c_username) {
         this.c_username = c_username;
+    }
+
+    public String getY_nikename() {
+        return y_nikename;
+    }
+
+    public void setY_nikename(String y_nikename) {
+        this.y_nikename = y_nikename;
     }
 }

@@ -1,4 +1,4 @@
-package com.yunding.news.web.control;
+package com.yunding.news.web.control.ZQ;
 /*
  * @Name:朋友圈•图片
  * @Author:Farmerzhang
@@ -6,13 +6,13 @@ package com.yunding.news.web.control;
  * @Time: 16:28
  */import com.yunding.news.model.pojo.Pictures;
 import com.yunding.news.model.service.ServiceFactory;
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+@WebServlet(name = "pictureServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/pictureServlet"})
 
 public class pictureServlet extends HttpServlet {
     public void doPost(HttpServletResponse response, HttpServletRequest request) throws ServletException, IOException {
@@ -135,6 +136,9 @@ public class pictureServlet extends HttpServlet {
             pictures.setFid(json.getInt("fid"));
             ServiceFactory.getService("picture").save(pictures);
         }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
     }
 
 

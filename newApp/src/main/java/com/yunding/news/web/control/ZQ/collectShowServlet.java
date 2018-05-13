@@ -1,11 +1,15 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.web.control.ZQ;    /*
  * @Name:
  * @Author:Farmerzhang
  * @Date: 2018/5/12
  * @Time: 10:43
  */
 
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.Collect;
+import com.yunding.news.model.pojo.ZQ.collect_;
+import com.yunding.news.model.pojo.ZQ.sortClass_C;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -24,7 +28,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.yunding.news.model.service.ServiceFactory.getService;
-@WebServlet(name = "collectShowServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/collectShowServlet"})
+@WebServlet(name = "collectShowServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/collectShowServlet"})
 public class collectShowServlet extends HttpServlet {
     public collectShowServlet() {
     }
@@ -56,6 +60,8 @@ public class collectShowServlet extends HttpServlet {
                 collect_.setCollId(collect1.getCollId());
                 collect_.setFcontent(collect1.getfContent());
                 collect_.setFuser_name(collect1.getUserName());
+                Account account1= (Account) DaoFactory.getDao("user").findByUserName(collect1.getUserName());
+                collect_.setFnike_name(account1.getNickName());
                 Date ftime=collect1.getfTime();
                 DateFormat sdf=new SimpleDateFormat("yyyy-MM-dd-HH:mm");
                 String fTime=sdf.format(ftime);
@@ -75,6 +81,9 @@ public class collectShowServlet extends HttpServlet {
         printWriter.close();
 
 
+
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

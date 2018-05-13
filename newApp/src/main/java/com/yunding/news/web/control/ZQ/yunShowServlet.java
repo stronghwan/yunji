@@ -1,18 +1,23 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.web.control.ZQ;    /*
  * @Name:
  * @Author:Farmerzhang
  * @Date: 2018/5/12
  * @Time: 11:53
  */
 
+import com.yunding.news.model.dao.DaoFactory;
+import com.yunding.news.model.pojo.Account;
 import com.yunding.news.model.pojo.YunCircles;
 import com.yunding.news.model.pojo.YunComments;
 import com.yunding.news.model.pojo.YunMix;
+import com.yunding.news.model.pojo.ZQ.sortClass_y;
+import com.yunding.news.model.pojo.ZQ.yunMix_;
 import com.yunding.news.model.service.ServiceFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+@WebServlet(name = "yunShowServlet", urlPatterns = {"/main/java/com.yunding.news/web/control/ZQ/yunServlet"})
 
 public class yunShowServlet extends HttpServlet {
     public yunShowServlet() {
@@ -57,6 +63,8 @@ public class yunShowServlet extends HttpServlet {
                     yunmix_=new yunMix_();
                     yunmix_.setKindof(yunCircle1.getKindof());
                     yunmix_.setUsername(yunCircle1.getUserName());
+                    Account account1= (Account) DaoFactory.getDao("user").findByUserName(yunCircle1.getUserName());
+                    yunmix_.setY_nikename(account1.getNickName());
                     yunmix_.setY_content(yunCircle1.getyContent());
                     yunmix_.setYid(yunCircle1.getyId());
                     Date time=yunCircle1.getY_time();
@@ -65,10 +73,12 @@ public class yunShowServlet extends HttpServlet {
                     yunmix_.setY_time(Y_time);
                     //评论
                     List<YunComments> yunComments1=yunMix.getlYComments();
-                    List<yunMix_> comments=yunmix_.comments;
+                    List<yunMix_> comments=yunmix_.getComments();
                     for(YunComments yuncComment1:yunComments1){
                         yunmix_1=new yunMix_();
                         yunmix_1.setC_username(yuncComment1.getUserName());
+                        Account account2= (Account) DaoFactory.getDao("user").findByUserName(yuncComment1.getUserName());
+                        yunmix_1.setY_nikename(account2.getNickName());
                         yunmix_1.setC_content(yuncComment1.getcContent());
                         yunmix_1.setCid(yuncComment1.getcId());
                         comments.add(yunmix_1);
@@ -92,6 +102,9 @@ public class yunShowServlet extends HttpServlet {
         printWriter.close();
 
 
+
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }

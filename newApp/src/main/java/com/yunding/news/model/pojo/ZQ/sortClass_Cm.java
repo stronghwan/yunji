@@ -1,9 +1,11 @@
-package com.yunding.news.web.control;    /*
+package com.yunding.news.model.pojo.ZQ;    /*
  * @Name:朋友圈 评论排序
  * @Author:Farmerzhang
  * @Date: 2018/5/3
  * @Time: 21:01
  */
+
+import com.yunding.news.model.pojo.ZQ.commentfriendCircle_;
 
 import java.util.Comparator;
 

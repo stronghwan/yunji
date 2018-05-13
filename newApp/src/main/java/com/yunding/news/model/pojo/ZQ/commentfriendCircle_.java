@@ -1,10 +1,10 @@
-package com.yunding.news.web.control;
+package com.yunding.news.model.pojo.ZQ;
 /*
  * @Name:朋友圈（实体类）
  * @Author:Farmerzhang
  * @Date: 2018/4/23
  * @Time: 11:21
- */import com.yunding.news.model.pojo.Comment;
+ */
 
 import java.util.*;
 
@@ -14,12 +14,14 @@ public class commentfriendCircle_ {
    private String fcreate_time;
    private String fcontent;
    private String user_name;
+   private String  nike_name;
     // 评论的内容
     List<commentfriendCircle_> comments;
    private int cid;
    private int cuserId;  // 发说说人的id
     private String cuser_name;
    private String ccreate_time;
+   private String  cnick_name;
    private String ccontent;
 
    // 点赞的内容
@@ -51,14 +53,6 @@ public class commentfriendCircle_ {
 
     public void setFcontent(String fcontent) {
         this.fcontent = fcontent;
-    }
-
-    public String getUsername() {
-        return user_name;
-    }
-
-    public void setUsername(String username) {
-        this.user_name = username;
     }
 
     public List<commentfriendCircle_> getComments() {
@@ -139,5 +133,29 @@ public class commentfriendCircle_ {
 
     public void setPurl(String purl) {
         this.purl = purl;
+    }
+
+    public String getNike_name() {
+        return nike_name;
+    }
+
+    public void setNike_name(String nike_name) {
+        this.nike_name = nike_name;
+    }
+
+    public String getCnick_name() {
+        return cnick_name;
+    }
+
+    public void setCnick_name(String cnick_name) {
+        this.cnick_name = cnick_name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }
